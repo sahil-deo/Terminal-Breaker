@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dhop2hf8qqrlj" path="res://Scripts/game_controller.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://b4ts2wgqnhs3q" path="res://Scenes/OperatingSystem.tscn" id="2_qxrlw"]
-[ext_resource type="Script" uid="uid://cocqraiofhb5k" path="res://scripts/text_edit.gd" id="3_wrm1d"]
+[ext_resource type="Script" uid="uid://cocqraiofhb5k" path="res://Scripts/text_edit.gd" id="3_wrm1d"]
+[ext_resource type="Script" uid="uid://cj7pyafcmli8d" path="res://Scripts/Terminal_Manager.gd" id="4_3dryh"]
 
 [node name="Game" type="Node2D" unique_id=2139531392]
 script = ExtResource("1_ebmjs")
@@ -40,7 +41,9 @@ script = ExtResource("3_wrm1d")
 offset_right = 116.0
 offset_bottom = 114.0
 
-[node name="Node2D" type="Node2D" parent="." unique_id=102647713]
+[node name="TerminalManager" type="Node" parent="." unique_id=735494799 node_paths=PackedStringArray("terminal_display")]
+script = ExtResource("4_3dryh")
+terminal_display = NodePath("../CanvasLayer/Icon/Window/TextEdit")
 
 [editable path="CanvasLayer"]
 [editable path="CanvasLayer/Icon/Window/menuBar"]
