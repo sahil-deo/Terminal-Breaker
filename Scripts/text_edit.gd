@@ -1,5 +1,4 @@
 extends TextEdit
-@onready var gc: Node2D = $"../../../.."
 
 var _restoring := false
 

@@ -1,25 +1,28 @@
 [gd_scene format=3 uid="uid://b4ts2wgqnhs3q"]
 
-[ext_resource type="Texture2D" uid="uid://bwwdo05yml35k" path="res://icon.svg" id="1_ate51"]
-[ext_resource type="Script" uid="uid://bgptw8gxu0tiq" path="res://Scripts/app_icon.gd" id="2_ate51"]
-[ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="3_1tp28"]
+[ext_resource type="PackedScene" uid="uid://bu6yy7vp1ggjg" path="res://Scenes/terminal.tscn" id="1_fkvdj"]
+[ext_resource type="PackedScene" uid="uid://c010hxsjxegxs" path="res://Scenes/start.tscn" id="2_n73s8"]
+[ext_resource type="PackedScene" uid="uid://11upglhpp0jb" path="res://Scenes/settings.tscn" id="3_dqeoi"]
+[ext_resource type="PackedScene" uid="uid://lji7ui7gjmsx" path="res://Scenes/readme.tscn" id="4_sfqfq"]
 
-[sub_resource type="Gradient" id="Gradient_6hd2l"]
+[sub_resource type="Gradient" id="Gradient_n73s8"]
 colors = PackedColorArray(0.53409284, 4.0911138e-07, 0.27044594, 1, 1, 0.61599404, 0.7034463, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_4la23"]
-gradient = SubResource("Gradient_6hd2l")
+gradient = SubResource("Gradient_n73s8")
+
+[sub_resource type="Gradient" id="Gradient_dqeoi"]
+colors = PackedColorArray(0, 0.56947273, 0.97122675, 1, 0, 0.5686275, 0.972549, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4la23"]
+gradient = SubResource("Gradient_dqeoi")
+width = 53
+height = 53
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_erpt0"]
 specular_color = Color(0.73098385, 0.45697206, 1, 1)
 
-[sub_resource type="Gradient" id="Gradient_n73s8"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
-gradient = SubResource("Gradient_n73s8")
-
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1539373657]
+[node name="os" type="CanvasLayer" unique_id=1539373657]
 
 [node name="taskbar" type="TextureRect" parent="." unique_id=254340562]
 z_index = 1
@@ -29,6 +32,15 @@ offset_right = 1921.0
 offset_bottom = 1082.0
 texture = SubResource("GradientTexture1D_4la23")
 
+[node name="startbutton" type="TextureButton" parent="taskbar" unique_id=360900515]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.029000001
+anchor_bottom = 1.0
+offset_right = -2.7090034
+offset_bottom = -1.0
+texture_normal = SubResource("GradientTexture2D_4la23")
+
 [node name="background" type="TextureRect" parent="." unique_id=1532590950]
 z_index = -1
 offset_right = 1921.0
@@ -36,38 +48,22 @@ offset_bottom = 1082.0
 texture = SubResource("CanvasTexture_erpt0")
 expand_mode = 2
 
-[node name="Icon" type="TextureRect" parent="." unique_id=778012443]
-z_index = 1
-offset_left = 83.0
-offset_top = 88.0
-offset_right = 238.0
-offset_bottom = 243.0
-texture = ExtResource("1_ate51")
-expand_mode = 1
-script = ExtResource("2_ate51")
+[node name="Terminal" parent="." unique_id=2130627866 instance=ExtResource("1_fkvdj")]
 
-[node name="Window" type="TextureRect" parent="Icon" unique_id=606382299]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 364.0
-offset_top = 136.0
-offset_right = 1210.0
-offset_bottom = 614.0
-texture = SubResource("GradientTexture1D_fco6y")
+[node name="Settings" parent="." unique_id=249619316 instance=ExtResource("3_dqeoi")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="menuBar" parent="Icon/Window" unique_id=302003343 instance=ExtResource("3_1tp28")]
-layout_mode = 0
-offset_right = 1001.0
+[node name="Readme" parent="." unique_id=967416737 instance=ExtResource("4_sfqfq")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="Button" type="Button" parent="Icon" unique_id=2054953116]
-layout_mode = 0
-offset_right = 156.0
-offset_bottom = 155.0
-
-[connection signal="button_up" from="Icon/Window/menuBar/Button" to="Icon" method="_on_close_button_up"]
-[connection signal="button_up" from="Icon/Button" to="Icon" method="_on_button_button_up"]
-
-[editable path="Icon/Window/menuBar"]
+[node name="Start" parent="." unique_id=1641981859 instance=ExtResource("2_n73s8")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0

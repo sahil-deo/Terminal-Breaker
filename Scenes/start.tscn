@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c010hxsjxegxs"]
+
+[ext_resource type="Script" uid="uid://cn436yrd88vbw" path="res://Scripts/application.gd" id="1_r48yj"]
+[ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="2_2xm1f"]
+
+[sub_resource type="Gradient" id="Gradient_n73s8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
+gradient = SubResource("Gradient_n73s8")
+
+[sub_resource type="Gradient" id="Gradient_dqeoi"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1tp28"]
+gradient = SubResource("Gradient_dqeoi")
+
+[node name="Start" type="Control" unique_id=2130627866]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -2.0
+offset_right = -1.0
+offset_bottom = -2.0
+script = ExtResource("1_r48yj")
+
+[node name="Window" type="TextureRect" parent="." unique_id=2063490456]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 364.0
+offset_top = 136.0
+offset_right = 1363.0
+offset_bottom = 664.0
+texture = SubResource("GradientTexture1D_fco6y")
+
+[node name="menuBar" parent="Window" unique_id=302003343 instance=ExtResource("2_2xm1f")]
+layout_mode = 0
+offset_right = 1001.0
+
+[node name="TaskbarIcon" type="TextureRect" parent="." unique_id=2027435923]
+visible = false
+layout_mode = 0
+offset_left = 57.0
+offset_top = 1030.0
+offset_right = 476.0
+offset_bottom = 1083.0
+texture = SubResource("GradientTexture1D_1tp28")
+
+[node name="Label" type="Label" parent="TaskbarIcon" unique_id=1684691640]
+layout_mode = 0
+offset_right = 416.0
+offset_bottom = 51.0
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="button_up" from="Window/menuBar/Button" to="." method="_on_button_button_up"]
+
+[editable path="Window/menuBar"]
