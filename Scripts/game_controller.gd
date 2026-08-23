@@ -10,3 +10,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	pass
+
+
+func playAudio(case: String):
+	print(case)
+	pass
