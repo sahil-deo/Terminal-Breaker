@@ -1,0 +1,5 @@
+isolate network
+terminate thread
+flush cache
+divert traffic
+isolate node

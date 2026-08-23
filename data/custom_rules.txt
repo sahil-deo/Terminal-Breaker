@@ -1,0 +1,5 @@
+write apple x 3|appleappleapple
+write apple x 4|appleappleappleapple
+write apple with p|ppple
+replace all e's in system with 3|syst3m
+purge quarantine buffer 0x9|purge 0x9
