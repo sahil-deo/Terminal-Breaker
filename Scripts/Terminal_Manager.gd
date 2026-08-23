@@ -13,6 +13,10 @@ enum ChallengeType {
 	ANAGRAM
 }
 
+@export_group("Audio & Deception")
+@export var game_controller: Node # Drag your GameController node here in the Inspector
+@export var deceptive_beep_chance: float = 0.3 # 30% chance to play an error sound on a SUCCESSFUL input
+
 @export_group("UI Node Reference")
 @export var terminal_display: TextEdit # Assign your TextEdit node in the Inspector
 
@@ -298,6 +302,14 @@ func verify_cipher(player_input: String) -> void:
 		progress_updated.emit(current_mitigation, max_mitigation_points)
 		terminal_log("\n[STATUS: SUCCESS] Packet neutralized. Defense elevated.")
 		
+		# --- AUDIO MECHANIC: Correct Answer ---
+		if game_controller and game_controller.has_method("playAudio"):
+			if randf() <= deceptive_beep_chance:
+				# Deceive the player! Play the error sound even though they were right
+				game_controller.playAudio("beep")
+			else:
+				game_controller.playAudio("success")
+		
 		if current_mitigation >= max_mitigation_points:
 			complete_defense_sequence()
 			return
@@ -307,8 +319,13 @@ func verify_cipher(player_input: String) -> void:
 		current_mitigation = max(current_mitigation - points_lost_on_error, 0.0)
 		progress_updated.emit(current_mitigation, max_mitigation_points)
 		terminal_log("\n[STATUS: BREACH] Command syntax rejected! Integrity penalized (-%.0f pts). Target was: %s" % [points_lost_on_error, expected_answer])
+		
+		# --- AUDIO MECHANIC: Wrong Answer ---
+		if game_controller and game_controller.has_method("playAudio"):
+			game_controller.playAudio("beep")
+			
 		generate_new_challenge()
-
+		
 func verify_anagram(input_str: String, target_str: String) -> bool:
 	if input_str.length() != target_str.length(): return false
 	var input_arr = input_str.split("")

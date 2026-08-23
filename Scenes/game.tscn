@@ -41,8 +41,9 @@ script = ExtResource("3_wrm1d")
 offset_right = 116.0
 offset_bottom = 114.0
 
-[node name="TerminalManager" type="Node" parent="." unique_id=735494799 node_paths=PackedStringArray("terminal_display")]
+[node name="TerminalManager" type="Node" parent="." unique_id=735494799 node_paths=PackedStringArray("game_controller", "terminal_display")]
 script = ExtResource("4_3dryh")
+game_controller = NodePath("..")
 terminal_display = NodePath("../CanvasLayer/Icon/Window/TextEdit")
 
 [editable path="CanvasLayer"]
