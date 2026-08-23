@@ -2,12 +2,24 @@
 
 [ext_resource type="Script" uid="uid://cn436yrd88vbw" path="res://Scripts/application.gd" id="1_xws0m"]
 [ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="2_rwk22"]
+[ext_resource type="Script" uid="uid://d11tpo0gjok4p" path="res://Scripts/text_edit.gd" id="3_rwk22"]
+[ext_resource type="Texture2D" uid="uid://c5vboe1m4n50k" path="res://Assets/terminal.png" id="4_1llhr"]
 
 [sub_resource type="Gradient" id="Gradient_n73s8"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
 gradient = SubResource("Gradient_n73s8")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i44u3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lhmql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aaqfp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j2dne"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kysc"]
 
 [sub_resource type="Gradient" id="Gradient_dqeoi"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -40,6 +52,14 @@ texture = SubResource("GradientTexture1D_fco6y")
 layout_mode = 0
 offset_right = 1001.0
 
+[node name="TextEdit" type="TextEdit" parent="Window" unique_id=1319471348]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 47.0
+offset_right = 978.0
+offset_bottom = 516.0
+script = ExtResource("3_rwk22")
+
 [node name="Icon" type="Button" parent="." unique_id=1462929489]
 z_index = 4
 layout_mode = 0
@@ -47,7 +67,13 @@ offset_left = 80.0
 offset_top = 100.0
 offset_right = 176.0
 offset_bottom = 194.0
-text = "Terminal"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i44u3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lhmql")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_aaqfp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_j2dne")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6kysc")
+icon = ExtResource("4_1llhr")
+expand_icon = true
 
 [node name="TaskbarIcon" type="TextureRect" parent="." unique_id=2027435923]
 visible = false

@@ -9,6 +9,16 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
 gradient = SubResource("Gradient_n73s8")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00ph1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ts6jo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y1pwr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tdda1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0icg"]
+
 [sub_resource type="Gradient" id="Gradient_dqeoi"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
@@ -45,6 +55,11 @@ offset_left = 80.0
 offset_top = 400.0
 offset_right = 176.0
 offset_bottom = 494.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_00ph1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ts6jo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_y1pwr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tdda1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b0icg")
 text = "Settings"
 
 [node name="TaskbarIcon" type="TextureRect" parent="." unique_id=2027435923]
