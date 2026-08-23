@@ -15,3 +15,8 @@ func _process(delta: float) -> void:
 func _on_button_button_up() -> void:
 	window.visible = true
 	pass # Replace with function body.
+
+
+func _on_close_button_up() -> void:
+	window.visible = false
+	pass # Replace with function body.
