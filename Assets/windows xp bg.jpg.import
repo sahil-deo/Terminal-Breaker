@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biixou6wfv006"
-path="res://.godot/imported/readme.png-8534d33d76b9ccb8c124c06e01fab874.ctex"
+uid="uid://byi77n1qsi7fh"
+path="res://.godot/imported/windows xp bg.jpg-13592385d2e4644120b8a1896fbf59eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/readme.png"
-dest_files=["res://.godot/imported/readme.png-8534d33d76b9ccb8c124c06e01fab874.ctex"]
+source_file="res://Assets/windows xp bg.jpg"
+dest_files=["res://.godot/imported/windows xp bg.jpg-13592385d2e4644120b8a1896fbf59eb.ctex"]
 
 [params]
 

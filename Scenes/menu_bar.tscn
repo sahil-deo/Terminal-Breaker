@@ -1,26 +1,48 @@
 [gd_scene format=3 uid="uid://c67jtglob243c"]
 
-[sub_resource type="Gradient" id="Gradient_1kc8b"]
-offsets = PackedFloat32Array(0, 0.9578313, 1)
-colors = PackedColorArray(0.55095845, 0.5509585, 0.55095845, 1, 0.54901963, 0.54901963, 0.54901963, 1, 0.54901963, 0.54901963, 0.54901963, 1)
+[ext_resource type="Texture2D" uid="uid://c50csphg2bnt1" path="res://Assets/x.png" id="1_fco6y"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ate51"]
+[sub_resource type="Gradient" id="Gradient_fco6y"]
+colors = PackedColorArray(0.60882676, 0.8489741, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cgjhl"]
+gradient = SubResource("Gradient_fco6y")
+
+[sub_resource type="Gradient" id="Gradient_1kc8b"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1kc8b"]
 gradient = SubResource("Gradient_1kc8b")
 
-[sub_resource type="Gradient" id="Gradient_ysv37"]
-colors = PackedColorArray(1, 0.17254902, 0.1254902, 1, 1, 0.17254902, 0.1254902, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1kc8b"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1tp28"]
-gradient = SubResource("Gradient_ysv37")
-width = 32
-height = 32
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgjhl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sep5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gf80c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o86mk"]
 
 [node name="menuBar" type="TextureRect" unique_id=302003343]
-offset_right = 1152.0
-offset_bottom = 32.0
-texture = SubResource("GradientTexture1D_ate51")
+z_index = 2
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1151.0
+offset_bottom = 31.0
+texture = SubResource("GradientTexture1D_cgjhl")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=993553981]
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1151.0
+offset_bottom = 31.0
+texture = SubResource("GradientTexture1D_1kc8b")
 
 [node name="Button" type="Button" parent="." unique_id=65238005]
+z_index = 1
 custom_maximum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 6
@@ -28,10 +50,17 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -16.0
-offset_bottom = 16.0
+offset_left = -30.0
+offset_top = -14.0
+offset_right = -1.0
+offset_bottom = 14.0
 grow_horizontal = 0
 grow_vertical = 2
-icon = SubResource("GradientTexture2D_1tp28")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1kc8b")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cgjhl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5sep5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gf80c")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o86mk")
+icon = ExtResource("1_fco6y")
 icon_alignment = 1
+expand_icon = true

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cn436yrd88vbw" path="res://Scripts/application.gd" id="1_r48yj"]
 [ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="2_2xm1f"]
+[ext_resource type="Texture2D" uid="uid://c50csphg2bnt1" path="res://Assets/x.png" id="3_5ogh5"]
 
 [sub_resource type="Gradient" id="Gradient_n73s8"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -14,6 +15,16 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1tp28"]
 gradient = SubResource("Gradient_dqeoi")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3wvq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rk01k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lb6bl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r48yj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ogh5"]
 
 [node name="Start" type="Control" unique_id=2130627866]
 z_index = 1
@@ -39,15 +50,21 @@ texture = SubResource("GradientTexture1D_fco6y")
 
 [node name="menuBar" parent="Window" unique_id=302003343 instance=ExtResource("2_2xm1f")]
 layout_mode = 0
-offset_right = 1001.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 998.0
+offset_bottom = 30.0
+
+[node name="TextureRect" parent="Window/menuBar" index="1" unique_id=993553981]
+offset_right = 999.0
 
 [node name="TaskbarIcon" type="TextureRect" parent="." unique_id=2027435923]
 visible = false
 layout_mode = 0
 offset_left = 57.0
-offset_top = 1030.0
+offset_top = 1029.0
 offset_right = 476.0
-offset_bottom = 1083.0
+offset_bottom = 1082.0
 texture = SubResource("GradientTexture1D_1tp28")
 
 [node name="Label" type="Label" parent="TaskbarIcon" unique_id=1684691640]
@@ -59,6 +76,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="Icon" type="Button" parent="." unique_id=106165523]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 1031.0
+offset_right = 57.0
+offset_bottom = 1079.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o3wvq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rk01k")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lb6bl")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_r48yj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ogh5")
+icon = ExtResource("3_5ogh5")
+expand_icon = true
+
 [connection signal="button_up" from="Window/menuBar/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="Icon" to="." method="_on_icon_button_up"]
 
 [editable path="Window/menuBar"]

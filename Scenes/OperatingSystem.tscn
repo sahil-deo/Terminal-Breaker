@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b4ts2wgqnhs3q"]
 
+[ext_resource type="Texture2D" uid="uid://byi77n1qsi7fh" path="res://Assets/windows xp bg.jpg" id="1_dqeoi"]
 [ext_resource type="PackedScene" uid="uid://bu6yy7vp1ggjg" path="res://Scenes/terminal.tscn" id="1_fkvdj"]
 [ext_resource type="PackedScene" uid="uid://c010hxsjxegxs" path="res://Scenes/start.tscn" id="2_n73s8"]
 [ext_resource type="PackedScene" uid="uid://11upglhpp0jb" path="res://Scenes/settings.tscn" id="3_dqeoi"]
@@ -11,17 +12,6 @@ colors = PackedColorArray(0.53409284, 4.0911138e-07, 0.27044594, 1, 1, 0.6159940
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_4la23"]
 gradient = SubResource("Gradient_n73s8")
 
-[sub_resource type="Gradient" id="Gradient_dqeoi"]
-colors = PackedColorArray(0, 0.56947273, 0.97122675, 1, 0, 0.5686275, 0.972549, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4la23"]
-gradient = SubResource("Gradient_dqeoi")
-width = 53
-height = 53
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_erpt0"]
-specular_color = Color(0.73098385, 0.45697206, 1, 1)
-
 [node name="os" type="CanvasLayer" unique_id=1539373657]
 
 [node name="taskbar" type="TextureRect" parent="." unique_id=254340562]
@@ -32,20 +22,11 @@ offset_right = 1921.0
 offset_bottom = 1082.0
 texture = SubResource("GradientTexture1D_4la23")
 
-[node name="startbutton" type="TextureButton" parent="taskbar" unique_id=360900515]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.029000001
-anchor_bottom = 1.0
-offset_right = -2.7090034
-offset_bottom = -1.0
-texture_normal = SubResource("GradientTexture2D_4la23")
-
 [node name="background" type="TextureRect" parent="." unique_id=1532590950]
 z_index = -1
 offset_right = 1921.0
 offset_bottom = 1082.0
-texture = SubResource("CanvasTexture_erpt0")
+texture = ExtResource("1_dqeoi")
 expand_mode = 2
 
 [node name="Terminal" parent="." unique_id=2130627866 instance=ExtResource("1_fkvdj")]

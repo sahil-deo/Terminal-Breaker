@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cn436yrd88vbw" path="res://Scripts/application.gd" id="1_ox2j8"]
 [ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="2_pcm5f"]
-[ext_resource type="Texture2D" uid="uid://biixou6wfv006" path="res://Assets/readme.png" id="3_00ph1"]
+[ext_resource type="Texture2D" uid="uid://dbqtdxlapb7i6" path="res://Assets/file.png" id="3_00ph1"]
 
 [sub_resource type="Gradient" id="Gradient_n73s8"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -50,6 +50,12 @@ texture = SubResource("GradientTexture1D_fco6y")
 
 [node name="menuBar" parent="Window" unique_id=302003343 instance=ExtResource("2_pcm5f")]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1000.0
+offset_bottom = 30.0
+
+[node name="TextureRect" parent="Window/menuBar" index="0" unique_id=993553981]
 offset_right = 1001.0
 
 [node name="Icon" type="Button" parent="." unique_id=1462929489]
@@ -72,6 +78,19 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_af1u2")
 icon = ExtResource("3_00ph1")
 icon_alignment = 1
 expand_icon = true
+
+[node name="Label" type="Label" parent="Icon" unique_id=137526093]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 93.0
+offset_right = 95.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.67058825)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+text = "readme.txt"
+horizontal_alignment = 1
 
 [node name="TaskbarIcon" type="TextureRect" parent="." unique_id=2027435923]
 visible = false
