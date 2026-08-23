@@ -9,4 +9,36 @@ script = ExtResource("1_ebmjs")
 [node name="CanvasLayer" parent="." unique_id=1539373657 instance=ExtResource("2_qxrlw")]
 follow_viewport_enabled = true
 
+[node name="Icon" parent="CanvasLayer" index="2" unique_id=778012443]
+offset_right = 200.0
+offset_bottom = 208.0
+
+[node name="Window" parent="CanvasLayer/Icon" index="0" unique_id=606382299]
+offset_right = 1249.0
+offset_bottom = 638.0
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/Icon/Window" index="1" unique_id=1319511288]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 58.0
+offset_right = 953.0
+offset_bottom = 584.0
+placeholder_text = "Start typing..."
+shortcut_keys_enabled = false
+selecting_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+tab_input_mode = false
+scroll_smooth = true
+scroll_past_end_of_file = true
+
+[node name="Button" parent="CanvasLayer/Icon" index="1" unique_id=2054953116]
+offset_right = 116.0
+offset_bottom = 114.0
+
 [node name="Node2D" type="Node2D" parent="." unique_id=102647713]
+
+[editable path="CanvasLayer"]
+[editable path="CanvasLayer/Icon/Window/menuBar"]
