@@ -12,7 +12,6 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_gui_input(event: InputEvent) -> void:
-	if(event.is_action_pressed("mouseLeft")):
-		window.visible = true
+func _on_button_button_up() -> void:
+	window.visible = true
 	pass # Replace with function body.

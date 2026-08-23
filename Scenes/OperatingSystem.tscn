@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bwwdo05yml35k" path="res://icon.svg" id="1_ate51"]
 [ext_resource type="Script" uid="uid://bgptw8gxu0tiq" path="res://Scripts/app_icon.gd" id="2_ate51"]
+[ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="3_1tp28"]
 
 [sub_resource type="Gradient" id="Gradient_6hd2l"]
 colors = PackedColorArray(0.53409284, 4.0911138e-07, 0.27044594, 1, 1, 0.61599404, 0.7034463, 1)
@@ -12,42 +13,60 @@ gradient = SubResource("Gradient_6hd2l")
 [sub_resource type="CanvasTexture" id="CanvasTexture_erpt0"]
 specular_color = Color(0.73098385, 0.45697206, 1, 1)
 
+[sub_resource type="Gradient" id="Gradient_n73s8"]
+colors = PackedColorArray(0, 0.922716, 0.90772295, 1, 0.6261592, 0.3695406, 0.6486108, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
+gradient = SubResource("Gradient_n73s8")
+
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1539373657]
 
 [node name="taskbar" type="TextureRect" parent="." unique_id=254340562]
 z_index = 1
 anchors_preset = -1
-offset_top = 615.0
-offset_right = 1161.0
-offset_bottom = 653.0
+offset_top = 1028.0
+offset_right = 1921.0
+offset_bottom = 1082.0
 texture = SubResource("GradientTexture1D_4la23")
 
 [node name="background" type="TextureRect" parent="." unique_id=1532590950]
 z_index = -1
-offset_right = 1161.0
-offset_bottom = 653.0
+offset_right = 1921.0
+offset_bottom = 1082.0
 texture = SubResource("CanvasTexture_erpt0")
 expand_mode = 2
 
 [node name="Icon" type="TextureRect" parent="." unique_id=778012443]
 z_index = 1
-offset_left = 49.0
-offset_top = 84.0
-offset_right = 149.0
-offset_bottom = 184.0
+offset_left = 83.0
+offset_top = 88.0
+offset_right = 238.0
+offset_bottom = 243.0
 texture = ExtResource("1_ate51")
 expand_mode = 1
 script = ExtResource("2_ate51")
 
 [node name="Window" type="TextureRect" parent="Icon" unique_id=606382299]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 210.0
-offset_top = 40.0
-offset_right = 756.0
-offset_bottom = 331.0
-texture = ExtResource("1_ate51")
+offset_left = 364.0
+offset_top = 136.0
+offset_right = 1210.0
+offset_bottom = 614.0
+texture = SubResource("GradientTexture1D_fco6y")
 
-[connection signal="gui_input" from="Icon" to="Icon" method="_on_gui_input"]
+[node name="menuBar" parent="Icon/Window" unique_id=302003343 instance=ExtResource("3_1tp28")]
+layout_mode = 0
+offset_right = 1001.0
+
+[node name="Button" type="Button" parent="Icon" unique_id=2054953116]
+layout_mode = 0
+offset_right = 156.0
+offset_bottom = 155.0
+
+[connection signal="button_up" from="Icon/Button" to="Icon" method="_on_button_button_up"]
+
+[editable path="Icon/Window/menuBar"]
