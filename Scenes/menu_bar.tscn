@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://c67jtglob243c"]
 
 [sub_resource type="Gradient" id="Gradient_1kc8b"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.9578313, 1)
+colors = PackedColorArray(0.55095845, 0.5509585, 0.55095845, 1, 0.54901963, 0.54901963, 0.54901963, 1, 0.54901963, 0.54901963, 0.54901963, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ate51"]
 gradient = SubResource("Gradient_1kc8b")
 
 [sub_resource type="Gradient" id="Gradient_ysv37"]
+colors = PackedColorArray(1, 0.17254902, 0.1254902, 1, 1, 0.17254902, 0.1254902, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1tp28"]
 gradient = SubResource("Gradient_ysv37")
