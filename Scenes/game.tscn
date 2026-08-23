@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhop2hf8qqrlj" path="res://Scripts/game_controller.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://b4ts2wgqnhs3q" path="res://Scenes/OperatingSystem.tscn" id="2_qxrlw"]
+[ext_resource type="Script" uid="uid://cocqraiofhb5k" path="res://scripts/text_edit.gd" id="3_wrm1d"]
 
 [node name="Game" type="Node2D" unique_id=2139531392]
 script = ExtResource("1_ebmjs")
@@ -33,6 +34,7 @@ autowrap_mode = 1
 tab_input_mode = false
 scroll_smooth = true
 scroll_past_end_of_file = true
+script = ExtResource("3_wrm1d")
 
 [node name="Button" parent="CanvasLayer/Icon" index="1" unique_id=2054953116]
 offset_right = 116.0
