@@ -8,3 +8,5 @@ script = ExtResource("1_ebmjs")
 
 [node name="CanvasLayer" parent="." unique_id=1539373657 instance=ExtResource("2_qxrlw")]
 follow_viewport_enabled = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=102647713]
