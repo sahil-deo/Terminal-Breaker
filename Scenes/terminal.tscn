@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cn436yrd88vbw" path="res://Scripts/application.gd" id="1_xws0m"]
 [ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="2_rwk22"]
 [ext_resource type="Texture2D" uid="uid://dxneo8ikwabfo" path="res://Assets/terminal2.png" id="4_1llhr"]
+[ext_resource type="Texture2D" uid="uid://dond3u4uj3wle" path="res://Assets/taskbar-icon-bg.png" id="4_mc8ca"]
 
 [sub_resource type="Gradient" id="Gradient_n73s8"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -22,12 +23,6 @@ gradient = SubResource("Gradient_n73s8")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kysc"]
 
-[sub_resource type="Gradient" id="Gradient_dqeoi"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1tp28"]
-gradient = SubResource("Gradient_dqeoi")
-
 [node name="Terminal" type="Control" unique_id=2130627866]
 layout_mode = 3
 anchors_preset = 0
@@ -38,6 +33,7 @@ offset_bottom = -2.0
 script = ExtResource("1_xws0m")
 
 [node name="Window" type="TextureRect" parent="." unique_id=2063490456]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -71,8 +67,10 @@ offset_bottom = 30.0
 [node name="TextureRect" type="TextureRect" parent="Window/Title" unique_id=1819157360]
 z_index = 2
 layout_mode = 0
-offset_right = 30.0
-offset_bottom = 30.0
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 29.0
+offset_bottom = 31.0
 texture = ExtResource("4_1llhr")
 expand_mode = 1
 stretch_mode = 5
@@ -88,7 +86,7 @@ theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.6313726)
 theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = SubResource("FontVariation_niaxb")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "Terminal"
 vertical_alignment = 1
 
@@ -122,20 +120,21 @@ theme_override_constants/outline_size = 3
 text = "terminal.exe"
 horizontal_alignment = 1
 
-[node name="TaskbarIcon" type="TextureRect" parent="." unique_id=2027435923]
+[node name="TaskbarIcon" type="TextureRect" parent="." unique_id=688885918]
 visible = false
 z_index = 1
 layout_mode = 0
-offset_left = 57.0
-offset_top = 1030.0
-offset_right = 476.0
-offset_bottom = 1083.0
-texture = SubResource("GradientTexture1D_1tp28")
+offset_left = 61.0
+offset_top = 1039.0
+offset_right = 462.0
+offset_bottom = 1073.0
+texture = ExtResource("4_mc8ca")
+stretch_mode = 2
 
-[node name="Label" type="Label" parent="TaskbarIcon" unique_id=1684691640]
+[node name="Label" type="Label" parent="TaskbarIcon" unique_id=803782468]
 layout_mode = 0
-offset_right = 416.0
-offset_bottom = 51.0
+offset_right = 400.0
+offset_bottom = 34.0
 text = "Terminal"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -3,12 +3,15 @@
 [ext_resource type="Script" uid="uid://cn436yrd88vbw" path="res://Scripts/application.gd" id="2_i44u3"]
 [ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="2_lhmql"]
 [ext_resource type="Texture2D" uid="uid://xpabql0a6sar" path="res://Assets/settings.png" id="3_lhmql"]
+[ext_resource type="Texture2D" uid="uid://dond3u4uj3wle" path="res://Assets/taskbar-icon-bg.png" id="4_aaqfp"]
 
 [sub_resource type="Gradient" id="Gradient_n73s8"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
 gradient = SubResource("Gradient_n73s8")
+
+[sub_resource type="FontVariation" id="FontVariation_6kysc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00ph1"]
 
@@ -19,12 +22,6 @@ gradient = SubResource("Gradient_n73s8")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tdda1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0icg"]
-
-[sub_resource type="Gradient" id="Gradient_dqeoi"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1tp28"]
-gradient = SubResource("Gradient_dqeoi")
 
 [node name="Terminal" type="Control" unique_id=2130627866]
 z_index = 1
@@ -48,12 +45,44 @@ texture = SubResource("GradientTexture1D_fco6y")
 
 [node name="menuBar" parent="Window" unique_id=302003343 instance=ExtResource("2_lhmql")]
 layout_mode = 0
+offset_left = 0.0
 offset_top = 0.0
 offset_right = 1002.0
 offset_bottom = 30.0
 
 [node name="TextureRect" parent="Window/menuBar" index="0" unique_id=802743367]
 offset_right = -0.9990845
+
+[node name="Title" type="Control" parent="Window" unique_id=1879103725]
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 370.0
+offset_bottom = 30.0
+
+[node name="TextureRect" type="TextureRect" parent="Window/Title" unique_id=1849929056]
+z_index = 2
+layout_mode = 0
+offset_left = 5.0
+offset_right = 24.0
+offset_bottom = 30.0
+texture = ExtResource("3_lhmql")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Window/Title" unique_id=1211168999]
+z_index = 2
+layout_mode = 0
+offset_left = 29.0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.6313726)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = SubResource("FontVariation_6kysc")
+theme_override_font_sizes/font_size = 16
+text = "Settings"
+vertical_alignment = 1
 
 [node name="Icon" type="Button" parent="." unique_id=1462929489]
 layout_mode = 0
@@ -82,19 +111,21 @@ theme_override_constants/outline_size = 3
 text = "settings.exe"
 horizontal_alignment = 1
 
-[node name="TaskbarIcon" type="TextureRect" parent="." unique_id=2027435923]
+[node name="TaskbarIcon" type="TextureRect" parent="." unique_id=305979159]
 visible = false
+z_index = 1
 layout_mode = 0
-offset_left = 57.0
-offset_top = 1030.0
-offset_right = 476.0
-offset_bottom = 1083.0
-texture = SubResource("GradientTexture1D_1tp28")
+offset_left = 61.0
+offset_top = 1037.0
+offset_right = 462.0
+offset_bottom = 1071.0
+texture = ExtResource("4_aaqfp")
+stretch_mode = 2
 
-[node name="Label" type="Label" parent="TaskbarIcon" unique_id=1684691640]
+[node name="Label" type="Label" parent="TaskbarIcon" unique_id=436246927]
 layout_mode = 0
-offset_right = 416.0
-offset_bottom = 51.0
+offset_right = 400.0
+offset_bottom = 34.0
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1

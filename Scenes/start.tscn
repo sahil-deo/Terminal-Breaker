@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cn436yrd88vbw" path="res://Scripts/application.gd" id="1_r48yj"]
 [ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="2_2xm1f"]
-[ext_resource type="Texture2D" uid="uid://c50csphg2bnt1" path="res://Assets/x.png" id="3_5ogh5"]
+[ext_resource type="Texture2D" uid="uid://boj22wolue085" path="res://Assets/mid-cross.png" id="3_5ogh5"]
+[ext_resource type="Texture2D" uid="uid://dxneo8ikwabfo" path="res://Assets/terminal2.png" id="3_rk01k"]
+[ext_resource type="Texture2D" uid="uid://dond3u4uj3wle" path="res://Assets/taskbar-icon-bg.png" id="4_lb6bl"]
 
 [sub_resource type="Gradient" id="Gradient_n73s8"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -10,11 +12,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
 gradient = SubResource("Gradient_n73s8")
 
-[sub_resource type="Gradient" id="Gradient_dqeoi"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1tp28"]
-gradient = SubResource("Gradient_dqeoi")
+[sub_resource type="FontVariation" id="FontVariation_o3wvq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3wvq"]
 
@@ -58,37 +56,69 @@ offset_bottom = 30.0
 [node name="TextureRect" parent="Window/menuBar" index="0" unique_id=802743367]
 offset_right = -1.0020752
 
-[node name="TaskbarIcon" type="TextureRect" parent="." unique_id=2027435923]
-visible = false
-layout_mode = 0
-offset_left = 57.0
-offset_top = 1029.0
-offset_right = 476.0
-offset_bottom = 1082.0
-texture = SubResource("GradientTexture1D_1tp28")
+[node name="Title" type="Control" parent="Window" unique_id=1135729769]
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 370.0
+offset_bottom = 30.0
 
-[node name="Label" type="Label" parent="TaskbarIcon" unique_id=1684691640]
+[node name="TextureRect" type="TextureRect" parent="Window/Title" unique_id=1465591222]
+z_index = 2
 layout_mode = 0
-offset_right = 416.0
-offset_bottom = 51.0
+offset_left = 5.0
+offset_right = 27.0
+offset_bottom = 30.0
+texture = ExtResource("3_rk01k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Window/Title" unique_id=929300815]
+z_index = 2
+layout_mode = 0
+offset_left = 30.0
+offset_right = 151.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.6313726)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = SubResource("FontVariation_o3wvq")
+theme_override_font_sizes/font_size = 16
 text = "Start"
-horizontal_alignment = 1
 vertical_alignment = 1
-uppercase = true
 
 [node name="Icon" type="Button" parent="." unique_id=106165523]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 1033.0
+offset_top = 1037.0
 offset_right = 55.0
-offset_bottom = 1077.0
+offset_bottom = 1071.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o3wvq")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_rk01k")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_lb6bl")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_r48yj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5ogh5")
 icon = ExtResource("3_5ogh5")
-expand_icon = true
+
+[node name="TaskbarIcon" type="TextureRect" parent="." unique_id=1589150817]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 61.0
+offset_top = 1037.0
+offset_right = 462.0
+offset_bottom = 1071.0
+texture = ExtResource("4_lb6bl")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="TaskbarIcon" unique_id=1598123791]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 34.0
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [connection signal="button_up" from="Window/menuBar/Button" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Icon" to="." method="_on_icon_button_up"]

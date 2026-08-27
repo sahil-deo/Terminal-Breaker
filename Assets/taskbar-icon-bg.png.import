@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qkgkjj8bxohm"
-path="res://.godot/imported/cross.png-4499963432517842f8cd445c9598d7e4.ctex"
+uid="uid://dond3u4uj3wle"
+path="res://.godot/imported/taskbar-icon-bg.png-e130ab606bf43c26ee7da8b497a4c161.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/cross.png"
-dest_files=["res://.godot/imported/cross.png-4499963432517842f8cd445c9598d7e4.ctex"]
+source_file="res://Assets/taskbar-icon-bg.png"
+dest_files=["res://.godot/imported/taskbar-icon-bg.png-e130ab606bf43c26ee7da8b497a4c161.ctex"]
 
 [params]
 

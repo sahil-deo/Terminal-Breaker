@@ -16,6 +16,10 @@ game_controller = NodePath("..")
 
 [node name="os" parent="." unique_id=1539373657 instance=ExtResource("2_qxrlw")]
 
+[node name="Start" parent="os" index="5" unique_id=1641981859]
+offset_left = -1.0
+offset_right = -1.0
+
 [node name="sfx" type="Node" parent="." unique_id=1178899432]
 
 [node name="Beep" type="AudioStreamPlayer" parent="sfx" unique_id=1963316330]

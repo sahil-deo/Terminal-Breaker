@@ -21,6 +21,10 @@ enum ChallengeType {
 @export var max_mitigation_points: float = 100.0
 @export var points_per_success: float = 15.0
 
+@export_group("Terminal Cursor")
+@export var cursor_char: String = "█"
+@export var cursor_blink_rate: float = 0.5 # seconds per on/off toggle
+
 # --- STATE VARIABLES ---
 var current_mitigation: float = 0.0
 var current_challenge_type: ChallengeType
@@ -35,6 +39,10 @@ var gaslight_triggered: bool = false
 var input_buffer: Array[Dictionary] = [] # Stores { "raw": "e", "bbcode": "[color=red]a[/color]" }
 var terminal_history: String = ""
 var is_game_active: bool = true
+
+# Cursor Blink State
+var cursor_visible: bool = true
+var cursor_blink_timer: float = 0.0
 
 # Sabotage States
 var blocked_sticky_key: String = ""
@@ -51,12 +59,32 @@ func _ready() -> void:
 	if terminal_display:
 		terminal_display.focus_mode = Control.FOCUS_NONE
 		terminal_display.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
+
+		# FIX 3: without this, RichTextLabel treats "[color=red]..." as literal
+		# text instead of markup, which is why the tags were showing on screen.
+		terminal_display.bbcode_enabled = true
+
+		# FIX 1: enables autoscroll so new lines push the view down like a
+		# real terminal instead of staying pinned at the top.
+		terminal_display.scroll_active = true
+		terminal_display.scroll_following = true
+
 	terminal_log("=================================================================")
 	terminal_log(" [SYSTEM ALERT]: UNAUTHORIZED ACCESS DETECTED. ")
 	terminal_log(" [ROOT DIRECTORY]: COMPROMISED. INITIATING COUNTERMEASURES.")
 	terminal_log("=================================================================")
 	generate_new_challenge()
+
+# FIX 2: drives the blinking cursor independent of keystrokes/input events.
+func _process(delta: float) -> void:
+	if not is_game_active:
+		return
+
+	cursor_blink_timer += delta
+	if cursor_blink_timer >= cursor_blink_rate:
+		cursor_blink_timer = 0.0
+		cursor_visible = not cursor_visible
+		render_terminal()
 
 # --- TERMINAL UI LOGGING ---
 func terminal_log(text: String) -> void:
@@ -81,11 +109,17 @@ func render_terminal() -> void:
 		
 	# Check for memory mechanic trigger
 	check_gaslight_scramble(raw_input)
+
+	# FIX 2 (cont.): render an actual blinking cursor glyph after the typed input.
+	var cursor_bbcode = "[color=white]" + cursor_char + "[/color]" if cursor_visible else " "
 	
 	if is_game_active:
-		terminal_display.text = terminal_history + "\n" + status_bar + "\n" + current_display_prompt + "\n> " + bbcode_input
+		terminal_display.text = terminal_history + "\n" + status_bar + "\n" + current_display_prompt + "\n> " + bbcode_input + cursor_bbcode
 	else:
 		terminal_display.text = terminal_history
+	# scroll_following (set in _ready) handles autoscroll on its own; a manual
+	# scroll_to_line() call here raced against RichTextLabel's internal line-
+	# cache timing and intermittently hid the newest 1-2 lines, so it's gone.
 
 # --- INPUT PROCESSING ALGORITHM ---
 func _unhandled_input(event: InputEvent) -> void:
