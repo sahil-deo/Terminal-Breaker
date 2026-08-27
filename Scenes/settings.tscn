@@ -48,13 +48,12 @@ texture = SubResource("GradientTexture1D_fco6y")
 
 [node name="menuBar" parent="Window" unique_id=302003343 instance=ExtResource("2_lhmql")]
 layout_mode = 0
-offset_left = 0.0
 offset_top = 0.0
-offset_right = 1001.0
+offset_right = 1002.0
 offset_bottom = 30.0
 
-[node name="TextureRect" parent="Window/menuBar" index="1" unique_id=993553981]
-offset_right = 1002.0
+[node name="TextureRect" parent="Window/menuBar" index="0" unique_id=802743367]
+offset_right = -0.9990845
 
 [node name="Icon" type="Button" parent="." unique_id=1462929489]
 layout_mode = 0

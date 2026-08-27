@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://q2a3umx2s1ny"]
+
+[ext_resource type="Script" uid="uid://byxtdkyfhsmke" path="res://Scripts/pop_up.gd" id="1_2xliu"]
+[ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="1_tv3en"]
+
+[sub_resource type="Gradient" id="Gradient_2xliu"]
+offsets = PackedFloat32Array(0.002118644, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4la23"]
+gradient = SubResource("Gradient_2xliu")
+
+[node name="pop up" type="Control" unique_id=382405728]
+z_index = 4
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1068.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2xliu")
+
+[node name="menuBar" parent="." unique_id=302003343 instance=ExtResource("1_tv3en")]
+z_index = 3
+layout_mode = 0
+offset_left = 650.0
+offset_top = 400.0
+offset_right = 1221.0
+offset_bottom = 430.0
+
+[node name="Button" parent="menuBar" index="1" unique_id=65238005]
+z_index = 3
+
+[node name="window" type="TextureRect" parent="." unique_id=1945424272]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 428.0
+offset_right = 1221.0
+offset_bottom = 565.0
+texture = SubResource("GradientTexture1D_4la23")
+
+[node name="Label" type="Label" parent="window" unique_id=631420463]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 19.0
+offset_right = 527.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.5176471)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "This is a test message"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="menuBar/Button" to="." method="_on_close_button_up"]
+
+[editable path="menuBar"]

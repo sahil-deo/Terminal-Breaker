@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dbqtdxlapb7i6" path="res://Assets/file.png" id="3_00ph1"]
 
 [sub_resource type="Gradient" id="Gradient_n73s8"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.004237288, 0.99364406)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
 gradient = SubResource("Gradient_n73s8")
@@ -54,9 +55,6 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 1000.0
 offset_bottom = 30.0
-
-[node name="TextureRect" parent="Window/menuBar" index="0" unique_id=993553981]
-offset_right = 1001.0
 
 [node name="Icon" type="Button" parent="." unique_id=1462929489]
 layout_mode = 0

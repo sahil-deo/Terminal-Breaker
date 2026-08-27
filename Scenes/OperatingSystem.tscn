@@ -7,10 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://lji7ui7gjmsx" path="res://Scenes/readme.tscn" id="4_sfqfq"]
 
 [sub_resource type="Gradient" id="Gradient_n73s8"]
-colors = PackedColorArray(0.53409284, 4.0911138e-07, 0.27044594, 1, 1, 0.61599404, 0.7034463, 1)
+colors = PackedColorArray(0.5294118, 0.5294118, 0.5294118, 1, 0.5294118, 0.5294118, 0.5294118, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_4la23"]
 gradient = SubResource("Gradient_n73s8")
+
+[sub_resource type="Gradient" id="Gradient_wrm1d"]
+colors = PackedColorArray(0.6627451, 0.6627451, 0.6627451, 1, 0.6624523, 0.66245234, 0.66245216, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dqeoi"]
+gradient = SubResource("Gradient_wrm1d")
 
 [node name="os" type="CanvasLayer" unique_id=1539373657]
 
@@ -21,6 +27,14 @@ offset_top = 1028.0
 offset_right = 1921.0
 offset_bottom = 1082.0
 texture = SubResource("GradientTexture1D_4la23")
+
+[node name="TextureRect" type="TextureRect" parent="taskbar" unique_id=318154139]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 1914.0
+offset_bottom = 46.0
+texture = SubResource("GradientTexture1D_dqeoi")
 
 [node name="background" type="TextureRect" parent="." unique_id=1532590950]
 z_index = -1

@@ -52,11 +52,11 @@ texture = SubResource("GradientTexture1D_fco6y")
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
-offset_right = 998.0
+offset_right = 999.0
 offset_bottom = 30.0
 
-[node name="TextureRect" parent="Window/menuBar" index="1" unique_id=993553981]
-offset_right = 999.0
+[node name="TextureRect" parent="Window/menuBar" index="0" unique_id=802743367]
+offset_right = -1.0020752
 
 [node name="TaskbarIcon" type="TextureRect" parent="." unique_id=2027435923]
 visible = false
@@ -78,10 +78,10 @@ uppercase = true
 
 [node name="Icon" type="Button" parent="." unique_id=106165523]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 1031.0
-offset_right = 57.0
-offset_bottom = 1079.0
+offset_left = 10.0
+offset_top = 1033.0
+offset_right = 55.0
+offset_bottom = 1077.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o3wvq")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_rk01k")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_lb6bl")
