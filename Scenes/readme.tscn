@@ -14,6 +14,12 @@ gradient = SubResource("Gradient_n73s8")
 
 [sub_resource type="FontVariation" id="FontVariation_ts6jo"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4la23"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dlahj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rkdi2"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ts6jo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y1pwr"]
@@ -25,7 +31,6 @@ gradient = SubResource("Gradient_n73s8")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_af1u2"]
 
 [node name="readme" type="Control" unique_id=2130627866]
-z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = -1.0
@@ -36,6 +41,7 @@ script = ExtResource("1_ox2j8")
 
 [node name="Window" type="TextureRect" parent="." unique_id=2063490456]
 visible = false
+z_index = 5
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -56,7 +62,7 @@ offset_bottom = 30.0
 [node name="Title" type="Control" parent="Window" unique_id=298249589]
 anchors_preset = 0
 offset_left = 1.0
-offset_right = 370.0
+offset_right = 1.0
 offset_bottom = 30.0
 
 [node name="TextureRect" type="TextureRect" parent="Window/Title" unique_id=1316850402]
@@ -74,7 +80,7 @@ stretch_mode = 5
 z_index = 2
 layout_mode = 0
 offset_left = 26.0
-offset_right = 147.0
+offset_right = 112.0
 offset_bottom = 30.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.6313726)
@@ -84,6 +90,52 @@ theme_override_fonts/font = SubResource("FontVariation_ts6jo")
 theme_override_font_sizes/font_size = 16
 text = "readme.txt"
 vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="Window" unique_id=1389157119]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 32.0
+offset_right = 999.0
+offset_bottom = 491.0
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.06675519, 0.066754915, 0.06675498, 1)
+theme_override_constants/caret_width = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4la23")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dlahj")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_rkdi2")
+text = "########## README ##################
+READ THIS FILE IN CASE OF AN EMERGENCY 
+###################################
+
+In case of any hacking attempt on the firewall, you must prevent it. 
+
+Step 1: Open Terminal
+
+Step 2: Type the word as it is
+
+Step 3: Typing word correctly increases progress bar
+
+Step 4: Wrong word results in a negative progress
+
+Step 5: Repeat until 100%
+
+PS: Dont trust the terminal, the audio errors, or even your keyboard..."
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+tab_input_mode = false
+scroll_smooth = true
+caret_type = 1
+caret_blink = true
+caret_blink_interval = 0.5
 
 [node name="Icon" type="Button" parent="." unique_id=1462929489]
 layout_mode = 0
@@ -139,6 +191,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[connection signal="button_down" from="Window/menuBar" to="." method="_on_menu_bar_button_down"]
+[connection signal="button_up" from="Window/menuBar" to="." method="_on_menu_bar_button_up"]
 [connection signal="button_up" from="Window/menuBar/Button" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Icon" to="." method="_on_icon_button_up"]
 

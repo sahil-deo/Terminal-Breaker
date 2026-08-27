@@ -3,10 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://ddhi2d3vpqri3" path="res://Assets/small-cross.png" id="1_fco6y"]
 
 [sub_resource type="Gradient" id="Gradient_fco6y"]
-colors = PackedColorArray(0.59, 0.59, 0.59, 1, 0.5882353, 0.5882353, 0.5882353, 1)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.51125926, 0.51125884, 0.5112589, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cgjhl"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o3stx"]
 gradient = SubResource("Gradient_fco6y")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_am0im"]
+texture = SubResource("GradientTexture1D_o3stx")
 
 [sub_resource type="Gradient" id="Gradient_1kc8b"]
 colors = PackedColorArray(0.75608736, 0.7560873, 0.7560873, 1, 0.75686276, 0.75686276, 0.75686276, 1)
@@ -24,13 +28,17 @@ gradient = SubResource("Gradient_1kc8b")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o86mk"]
 
-[node name="menuBar" type="TextureRect" unique_id=302003343]
+[node name="menuBar" type="Button" unique_id=489896690]
 z_index = 2
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 1151.0
 offset_bottom = 31.0
-texture = SubResource("GradientTexture1D_cgjhl")
+theme_override_styles/normal = SubResource("StyleBoxTexture_am0im")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_am0im")
+theme_override_styles/hover = SubResource("StyleBoxTexture_am0im")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_am0im")
+theme_override_styles/focus = SubResource("StyleBoxTexture_am0im")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=802743367]
 layout_mode = 1

@@ -4,16 +4,16 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var os: CanvasLayer = $os
 
 @onready var terminalWindow: TextureRect = $os/Terminal/Window
-@onready var terminalTaskbarIcon: TextureRect = $os/Terminal/TaskbarIcon
+@onready var _terminalTaskbarIcon: TextureRect = $os/Terminal/TaskbarIcon
 
 @onready var startWindow: TextureRect = $os/Start/Window
-@onready var startTaskbarIcon: TextureRect = $os/Start/TaskbarIcon
+@onready var _startTaskbarIcon: TextureRect = $os/Start/TaskbarIcon
 
 @onready var settingsWindow: TextureRect = $os/Settings/Window
-@onready var settinsTaskbarIcon: TextureRect = $os/Settings/TaskbarIcon
+@onready var _settinsTaskbarIcon: TextureRect = $os/Settings/TaskbarIcon
 
 @onready var readmeWindow: TextureRect = $os/Readme/Window
-@onready var readmeTaskbarIcon: TextureRect = $os/Readme/TaskbarIcon
+@onready var _readmeTaskbarIcon: TextureRect = $os/Readme/TaskbarIcon
 
 @onready var successAudio: AudioStreamPlayer = $sfx/Success
 @onready var beepAudio: AudioStreamPlayer = $sfx/Beep
@@ -23,7 +23,7 @@ var windowList
 var keyList
 
 func _ready():
-	windowList = [terminalWindow, terminalTaskbarIcon, startWindow, startTaskbarIcon, settingsWindow, settinsTaskbarIcon, settingsWindow, settinsTaskbarIcon, readmeWindow, readmeTaskbarIcon]
+	windowList = [terminalWindow, _terminalTaskbarIcon, startWindow, _startTaskbarIcon, settingsWindow, _settinsTaskbarIcon, settingsWindow, _settinsTaskbarIcon, readmeWindow, _readmeTaskbarIcon]
 	keyList = [$sfx/keystrokes/Key1, $sfx/keystrokes/Key2, $sfx/keystrokes/Key3, $sfx/keystrokes/Key4, $sfx/keystrokes/Key5, $sfx/keystrokes/Key6, $sfx/keystrokes/Key7]
 
 func showWindow(window, icon) -> void:

@@ -23,6 +23,9 @@ game_controller = NodePath("..")
 
 [node name="os" parent="." unique_id=1539373657 instance=ExtResource("2_qxrlw")]
 
+[node name="Icon" parent="os/Terminal" parent_id_path=PackedInt32Array(1539373657, 2130627866) index="1" unique_id=1462929489]
+z_index = 3
+
 [node name="Start" parent="os" index="5" unique_id=1641981859]
 offset_left = -1.0
 offset_right = -1.0
