@@ -15,8 +15,8 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var readmeWindow: TextureRect = $os/Readme/Window
 @onready var readmeTaskbarIcon: TextureRect = $os/Readme/TaskbarIcon
 
-@onready var successAudio: AudioStreamPlayer = $vfx/Success
-@onready var beepAudio: AudioStreamPlayer = $vfx/Beep
+@onready var successAudio: AudioStreamPlayer = $sfx/Success
+@onready var beepAudio: AudioStreamPlayer = $sfx/Beep
 
 var windowList 
 

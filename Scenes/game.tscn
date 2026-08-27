@@ -3,34 +3,25 @@
 [ext_resource type="Script" uid="uid://dhop2hf8qqrlj" path="res://Scripts/game_controller.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://b4ts2wgqnhs3q" path="res://Scenes/OperatingSystem.tscn" id="2_qxrlw"]
 [ext_resource type="Script" uid="uid://bwwbkpho2kst5" path="res://Scripts/TerminalManager.gd" id="2_wrm1d"]
+[ext_resource type="AudioStream" uid="uid://ch5kq4ik204aw" path="res://Assets/Audio/beep2.wav" id="4_wowpa"]
+[ext_resource type="AudioStream" uid="uid://blenqxxke8s1o" path="res://Assets/Audio/success.wav" id="5_i6g32"]
 
-[node name="Game" type="Node2D" unique_id=2139531392]
+[node name="Game" type="Node2D" unique_id=1407990066]
 script = ExtResource("1_ebmjs")
 
-[node name="TerminalManager" type="Node" parent="." unique_id=735494799 node_paths=PackedStringArray("terminal_display", "game_controller")]
+[node name="TerminalManager" type="Node" parent="." unique_id=68401410 node_paths=PackedStringArray("terminal_display", "game_controller")]
 script = ExtResource("2_wrm1d")
-terminal_display = NodePath("")
+terminal_display = NodePath("../os/Terminal/Window/TextEdit")
 game_controller = NodePath("..")
 
 [node name="os" parent="." unique_id=1539373657 instance=ExtResource("2_qxrlw")]
 
-[node name="taskbar" parent="os" index="0" unique_id=254340562]
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="sfx" type="Node" parent="." unique_id=1178899432]
 
-[node name="background" parent="os" index="1" unique_id=1532590950]
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="TextEdit" parent="os/Terminal/Window" parent_id_path=PackedInt32Array(1539373657, 2130627866, 2063490456) index="1" unique_id=1319471348]
-theme_override_font_sizes/font_size = 24
-
-[node name="vfx" type="Node" parent="." unique_id=1293767227]
-
-[node name="Success" type="AudioStreamPlayer" parent="vfx" unique_id=1634800938]
+[node name="Beep" type="AudioStreamPlayer" parent="sfx" unique_id=1963316330]
 stream = ExtResource("4_wowpa")
 
-[node name="Beep" type="AudioStreamPlayer" parent="vfx" unique_id=980651825]
+[node name="Success" type="AudioStreamPlayer" parent="sfx" unique_id=804428742]
 stream = ExtResource("5_i6g32")
 
 [editable path="os"]
