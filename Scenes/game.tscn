@@ -2,17 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dhop2hf8qqrlj" path="res://Scripts/game_controller.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://b4ts2wgqnhs3q" path="res://Scenes/OperatingSystem.tscn" id="2_qxrlw"]
-[ext_resource type="Script" uid="uid://cj7pyafcmli8d" path="res://Scripts/Terminal_Manager.gd" id="4_3dryh"]
-[ext_resource type="AudioStream" uid="uid://blenqxxke8s1o" path="res://Assets/Audio/success.wav" id="4_wowpa"]
-[ext_resource type="AudioStream" uid="uid://ch5kq4ik204aw" path="res://Assets/Audio/beep2.wav" id="5_i6g32"]
+[ext_resource type="Script" uid="uid://bwwbkpho2kst5" path="res://Scripts/TerminalManager.gd" id="2_wrm1d"]
 
 [node name="Game" type="Node2D" unique_id=2139531392]
 script = ExtResource("1_ebmjs")
 
-[node name="TerminalManager" type="Node" parent="." unique_id=735494799 node_paths=PackedStringArray("game_controller", "terminal_display")]
-script = ExtResource("4_3dryh")
+[node name="TerminalManager" type="Node" parent="." unique_id=735494799 node_paths=PackedStringArray("terminal_display", "game_controller")]
+script = ExtResource("2_wrm1d")
+terminal_display = NodePath("")
 game_controller = NodePath("..")
-terminal_display = NodePath("../os/Terminal/Window/TextEdit")
 
 [node name="os" parent="." unique_id=1539373657 instance=ExtResource("2_qxrlw")]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxneo8ikwabfo"
-path="res://.godot/imported/terminal2.png-9b953672971a8867815bc71fd3f1bacb.ctex"
+path="res://.godot/imported/terminal2.png-6649d9ea6fa219bc35084d9424e2e1c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/terminal2.png"
-dest_files=["res://.godot/imported/terminal2.png-9b953672971a8867815bc71fd3f1bacb.ctex"]
+source_file="res://assets/terminal2.png"
+dest_files=["res://.godot/imported/terminal2.png-6649d9ea6fa219bc35084d9424e2e1c3.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bakr4gdtldqxg"]
 
-[ext_resource type="Script" path="res://Scripts/Terminal_Manager.gd" id="1_j2wod"]
+[ext_resource type="Script" uid="uid://cj7pyafcmli8d" path="res://Scripts/Terminal_Manager_old.gd" id="1_j2wod"]
 
 [node name="Node2D" type="Node2D" unique_id=1425218893]
 script = ExtResource("1_j2wod")
