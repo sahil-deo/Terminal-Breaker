@@ -1,5 +1,5 @@
 extends Control
-
+@onready var gc = get_tree().root.get_node("Game")
 @export var defaultText: String
 @onready var label: Label = $window/Label
 
@@ -12,6 +12,7 @@ func setMessage(message: String):
 
 func _on_close_button_up() -> void:
 	print("xx")
+	gc.popUpOpen = false
 	queue_free()
 
 func setPosition(x: float, y: float):

@@ -18,12 +18,13 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var successAudio: AudioStreamPlayer = $sfx/Success
 @onready var beepAudio: AudioStreamPlayer = $sfx/Beep
 
+var popUpOpen: bool = false
 var windowList 
+var keyList
 
 func _ready():
 	windowList = [terminalWindow, terminalTaskbarIcon, startWindow, startTaskbarIcon, settingsWindow, settinsTaskbarIcon, settingsWindow, settinsTaskbarIcon, readmeWindow, readmeTaskbarIcon]
-	instantiatePopUp("Hello")
-	pass
+	keyList = [$sfx/keystrokes/Key1, $sfx/keystrokes/Key2, $sfx/keystrokes/Key3, $sfx/keystrokes/Key4, $sfx/keystrokes/Key5, $sfx/keystrokes/Key6, $sfx/keystrokes/Key7]
 
 func showWindow(window, icon) -> void:
 	for w in windowList:
@@ -40,8 +41,16 @@ func playAudio(case: String):
 		"success":
 			successAudio.play()
 			instantiatePopUp("CORRECT!!!")
+		"key":
+			var i = randi_range(0, 5)
+			keyList[i].play()
+		"backspace":
+			keyList[6].play()
+		"enter":
+			keyList[6].play()
 	
 func instantiatePopUp(message: String):
+	popUpOpen = true
 	var newPopup: Control = POP_UP.instantiate();
 	os.add_child(newPopup);
 	newPopup.setMessage(message)

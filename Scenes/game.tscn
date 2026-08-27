@@ -5,6 +5,13 @@
 [ext_resource type="Script" uid="uid://bwwbkpho2kst5" path="res://Scripts/TerminalManager.gd" id="2_wrm1d"]
 [ext_resource type="AudioStream" uid="uid://ch5kq4ik204aw" path="res://Assets/Audio/beep2.wav" id="4_wowpa"]
 [ext_resource type="AudioStream" uid="uid://blenqxxke8s1o" path="res://Assets/Audio/success.wav" id="5_i6g32"]
+[ext_resource type="AudioStream" uid="uid://bu04tnc5xxoq0" path="res://Assets/Audio/keystrokes/key1.wav" id="6_rku1e"]
+[ext_resource type="AudioStream" uid="uid://bba86g7ph1k3p" path="res://Assets/Audio/keystrokes/key2.wav" id="7_rfjv2"]
+[ext_resource type="AudioStream" uid="uid://dmsgbssaa0o0h" path="res://Assets/Audio/keystrokes/key3.wav" id="8_1phco"]
+[ext_resource type="AudioStream" uid="uid://ds0ogjcu1aeyx" path="res://Assets/Audio/keystrokes/key4.wav" id="9_nb51f"]
+[ext_resource type="AudioStream" uid="uid://bpx2o5i3aj3p" path="res://Assets/Audio/keystrokes/key5.wav" id="10_nnt18"]
+[ext_resource type="AudioStream" uid="uid://7486v47yai0r" path="res://Assets/Audio/keystrokes/key6.wav" id="11_ewbju"]
+[ext_resource type="AudioStream" uid="uid://dbq6qiphj6t84" path="res://Assets/Audio/keystrokes/key7.wav" id="12_85qyi"]
 
 [node name="Game" type="Node2D" unique_id=1407990066]
 script = ExtResource("1_ebmjs")
@@ -27,6 +34,29 @@ stream = ExtResource("4_wowpa")
 
 [node name="Success" type="AudioStreamPlayer" parent="sfx" unique_id=804428742]
 stream = ExtResource("5_i6g32")
+
+[node name="keystrokes" type="Node" parent="sfx" unique_id=1030245971]
+
+[node name="Key1" type="AudioStreamPlayer" parent="sfx/keystrokes" unique_id=713321470]
+stream = ExtResource("6_rku1e")
+
+[node name="Key2" type="AudioStreamPlayer" parent="sfx/keystrokes" unique_id=376766571]
+stream = ExtResource("7_rfjv2")
+
+[node name="Key3" type="AudioStreamPlayer" parent="sfx/keystrokes" unique_id=1329498511]
+stream = ExtResource("8_1phco")
+
+[node name="Key4" type="AudioStreamPlayer" parent="sfx/keystrokes" unique_id=581314480]
+stream = ExtResource("9_nb51f")
+
+[node name="Key5" type="AudioStreamPlayer" parent="sfx/keystrokes" unique_id=1034808007]
+stream = ExtResource("10_nnt18")
+
+[node name="Key6" type="AudioStreamPlayer" parent="sfx/keystrokes" unique_id=1418133765]
+stream = ExtResource("11_ewbju")
+
+[node name="Key7" type="AudioStreamPlayer" parent="sfx/keystrokes" unique_id=2041282627]
+stream = ExtResource("12_85qyi")
 
 [editable path="os"]
 [editable path="os/Terminal"]

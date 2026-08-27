@@ -60,12 +60,8 @@ func _ready() -> void:
 		terminal_display.focus_mode = Control.FOCUS_NONE
 		terminal_display.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-		# FIX 3: without this, RichTextLabel treats "[color=red]..." as literal
-		# text instead of markup, which is why the tags were showing on screen.
 		terminal_display.bbcode_enabled = true
 
-		# FIX 1: enables autoscroll so new lines push the view down like a
-		# real terminal instead of staying pinned at the top.
 		terminal_display.scroll_active = true
 		terminal_display.scroll_following = true
 
@@ -75,7 +71,6 @@ func _ready() -> void:
 	terminal_log("=================================================================")
 	generate_new_challenge()
 
-# FIX 2: drives the blinking cursor independent of keystrokes/input events.
 func _process(delta: float) -> void:
 	if not is_game_active:
 		return
@@ -110,7 +105,6 @@ func render_terminal() -> void:
 	# Check for memory mechanic trigger
 	check_gaslight_scramble(raw_input)
 
-	# FIX 2 (cont.): render an actual blinking cursor glyph after the typed input.
 	var cursor_bbcode = "[color=white]" + cursor_char + "[/color]" if cursor_visible else " "
 	
 	if is_game_active:
@@ -124,9 +118,11 @@ func render_terminal() -> void:
 # --- INPUT PROCESSING ALGORITHM ---
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_game_active: return
-		
+	if not game_controller.terminalWindow.visible or game_controller.popUpOpen: return
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_ENTER:
+			game_controller.playAudio("enter")
+			
 			var submitted_raw = ""
 			var submitted_bbcode = ""
 			for item in input_buffer:
@@ -139,11 +135,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			verify_cipher(submitted_raw.strip_edges().to_lower())
 			
 		elif event.keycode == KEY_BACKSPACE:
+			game_controller.playAudio("backspace")
+			
 			if input_buffer.size() > 0:
 				input_buffer.pop_back()
 				render_terminal()
 				
 		elif event.unicode >= 32:
+			game_controller.playAudio("key")
+			
 			process_psychological_sabotage(String.chr(event.unicode).to_lower())
 			render_terminal()
 
