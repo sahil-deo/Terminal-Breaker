@@ -17,13 +17,16 @@
 [node name="Game" type="Node2D" unique_id=1407990066]
 script = ExtResource("1_ebmjs")
 
-[node name="TerminalManager" type="Node" parent="." unique_id=68401410 node_paths=PackedStringArray("terminal_display", "game_controller", "flush_button")]
+[node name="TerminalManager" type="Node" parent="." unique_id=68401410 node_paths=PackedStringArray("terminal_display", "game_controller")]
 script = ExtResource("2_wrm1d")
 terminal_display = NodePath("../os/Terminal/Window/TextEdit")
 game_controller = NodePath("..")
+<<<<<<< HEAD
 flush_button = NodePath("../os/Settings/Window/HardwareFlushButton")
 medium_threshold = 2
 hard_threshold = 5
+=======
+>>>>>>> fcc3fb0f3dc75e001d03bbd0d098382141c8d84d
 
 [node name="os" parent="." unique_id=1539373657 instance=ExtResource("2_qxrlw")]
 
@@ -67,9 +70,6 @@ stream = ExtResource("11_ewbju")
 
 [node name="Key7" type="AudioStreamPlayer" parent="sfx/keystrokes" unique_id=2041282627]
 stream = ExtResource("12_85qyi")
-
-[connection signal="button_down" from="os/Settings/Window/HardwareFlushButton" to="TerminalManager" method="_on_hardware_flush_button_button_down"]
-[connection signal="pressed" from="os/Settings/Window/HardwareFlushButton" to="TerminalManager" method="_on_hardware_flush_button_pressed"]
 
 [editable path="os"]
 [editable path="os/Terminal"]

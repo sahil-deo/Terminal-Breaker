@@ -37,17 +37,17 @@ script = ExtResource("2_i44u3")
 z_index = 4
 layout_mode = 1
 anchors_preset = -1
-offset_left = 364.0
-offset_top = 136.0
-offset_right = 1366.0
-offset_bottom = 694.0
+offset_left = 260.0
+offset_top = 679.0
+offset_right = 658.0
+offset_bottom = 995.0
 texture = SubResource("GradientTexture1D_fco6y")
 
 [node name="menuBar" parent="Window" unique_id=302003343 instance=ExtResource("2_lhmql")]
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
-offset_right = 1002.0
+offset_right = 398.0
 offset_bottom = 30.0
 
 [node name="TextureRect" parent="Window/menuBar" index="0" unique_id=802743367]
