@@ -41,17 +41,17 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 364.0
-offset_top = 136.0
-offset_right = 1363.0
-offset_bottom = 664.0
+offset_left = 223.0
+offset_top = 730.0
+offset_right = 617.0
+offset_bottom = 993.0
 texture = SubResource("GradientTexture1D_fco6y")
 
 [node name="menuBar" parent="Window" unique_id=302003343 instance=ExtResource("2_2xm1f")]
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
-offset_right = 999.0
+offset_right = 394.0
 offset_bottom = 30.0
 
 [node name="TextureRect" parent="Window/menuBar" index="0" unique_id=802743367]
