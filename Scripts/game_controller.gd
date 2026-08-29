@@ -18,6 +18,7 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var beepAudio: AudioStreamPlayer = $sfx/Beep
 @onready var glitchAudio: AudioStreamPlayer = $sfx/Glitch
 @onready var progressBar: ProgressBar = $os/Progress/Window/Progress/BreachProgress
+@onready var bgm: AudioStreamPlayer = $bgm
 
 var popUpOpen: bool = false
 var windowList 
@@ -77,10 +78,8 @@ func playAudio(case: String):
 	match case: 
 		"beep":
 			beepAudio.play()
-			instantiatePopUp("WRONG!!!")
 		"success":
 			successAudio.play()
-			instantiatePopUp("CORRECT!!!")
 		"key":
 			var i = randi_range(0, 5)
 			keyList[i].play()

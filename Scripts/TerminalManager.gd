@@ -195,12 +195,14 @@ func verify_cipher(player_input: String) -> void:
 		
 		if game_controller: 
 			game_controller.addProgress(success_reduction)
+			game_controller.instantiatePopUp("Correct!")
 			game_controller.playAudio("success")
 		terminal_log("\n[STATUS: SUCCESS] Protocol accepted. Breach reduced (%.0f%%)." % success_reduction)
 	else:
 		var penalty = penalty_hard if successful_commands >= hard_threshold else penalty_standard
 		if game_controller: 
 			game_controller.addProgress(penalty)
+			game_controller.instantiatePopUp("Wrong!")
 			game_controller.playAudio("beep")
 		terminal_log("\n[STATUS: BREACH] Command rejected. Target was: %s (+%.0f%%)" % [expected_answer, penalty])
 			

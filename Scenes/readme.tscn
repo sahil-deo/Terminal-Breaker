@@ -39,7 +39,6 @@ offset_bottom = -2.0
 script = ExtResource("1_ox2j8")
 
 [node name="Window" type="TextureRect" parent="." unique_id=2063490456]
-visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = -1
@@ -109,15 +108,15 @@ READ THIS FILE IN CASE OF AN EMERGENCY
 
 In case of any hacking attempt on the firewall, you must prevent it. 
 
-Step 1: Open Terminal
+Step 1: Open the Terminal
 
 Step 2: Type the command as it is
 
-Step 3: Typing command correctly increases progress bar
+Step 3: Typing command correctly secures the system
 
-Step 4: Wrong command results in a negative progress
+Step 4: Wrong command reduces system protection
 
-Step 5: Repeat until 100%
+Step 5: Secure system before firewall breach!
 
 PS: Dont trust the terminal, the commands, and yourself..."
 context_menu_enabled = false
