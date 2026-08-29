@@ -112,15 +112,15 @@ In case of any hacking attempt on the firewall, you must prevent it.
 
 Step 1: Open Terminal
 
-Step 2: Type the word as it is
+Step 2: Type the command as it is
 
-Step 3: Typing word correctly increases progress bar
+Step 3: Typing command correctly increases progress bar
 
-Step 4: Wrong word results in a negative progress
+Step 4: Wrong command results in a negative progress
 
 Step 5: Repeat until 100%
 
-PS: Dont trust the terminal, the audio errors, or even your keyboard..."
+PS: Dont trust the terminal, the commands, and yourself..."
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
