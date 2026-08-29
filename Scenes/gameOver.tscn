@@ -32,7 +32,7 @@ texture = ExtResource("4_bwgl3")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jp6nx"]
 texture = ExtResource("4_bwgl3")
 
-[node name="Start" type="Control" unique_id=2130627866]
+[node name="GameOver" type="Control" unique_id=2130627866]
 top_level = true
 visibility_layer = 2
 layout_mode = 3
@@ -44,6 +44,7 @@ offset_bottom = -2.0
 script = ExtResource("1_wipnb")
 
 [node name="Window" type="TextureRect" parent="." unique_id=2063490456]
+visible = false
 z_index = 4
 layout_mode = 1
 anchors_preset = -1
@@ -72,9 +73,6 @@ offset_bottom = 30.0
 
 [node name="TextureRect" parent="Window/menuBar" index="0" unique_id=802743367]
 offset_right = -1.0020752
-
-[node name="Button" parent="Window/menuBar" index="1" unique_id=65238005]
-visible = false
 
 [node name="Title" type="Control" parent="Window" unique_id=1135729769]
 anchors_preset = 0
@@ -137,5 +135,7 @@ text = "Shut Down"
 [connection signal="button_down" from="Window/menuBar" to="." method="_on_menu_bar_button_down"]
 [connection signal="button_up" from="Window/menuBar" to="." method="_on_menu_bar_button_up"]
 [connection signal="button_up" from="Window/menuBar/Button" to="." method="_on_button_button_up"]
+[connection signal="button_down" from="Window/RestartButton" to="." method="_on_restart_button_button_down"]
+[connection signal="button_down" from="Window/CloseButton" to="." method="_on_reboot_button_button_down"]
 
 [editable path="Window/menuBar"]

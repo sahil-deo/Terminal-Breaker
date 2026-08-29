@@ -5,6 +5,8 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 
 @onready var terminalWindow: TextureRect = $os/Terminal/Window
 @onready var game_overWindow: TextureRect = $os/GameOver/Window
+@onready var game_overCross: Button = $os/GameOver/Window/menuBar/Button
+@onready var game_overMessage: Label = $os/GameOver/Window/Message
 @onready var startWindow: TextureRect = $os/Start/Window
 @onready var settingsWindow: TextureRect = $os/Settings/Window
 @onready var readmeWindow: TextureRect = $os/Readme/Window
@@ -31,9 +33,11 @@ func _ready():
 		settingsWindow, 
 		readmeWindow, 
 		progressWindow, 
-		chatWindow
+		chatWindow,
+		game_overWindow
 		]
-		
+
+
 	keyList = [
 		$sfx/keystrokes/Key1, 
 		$sfx/keystrokes/Key2, 
@@ -52,14 +56,22 @@ func _process(delta: float) -> void:
 		gameOver()
 
 func showWindow(window) -> void:
+	if(isGameOver): return
+	if(window == startWindow):
+		game_overWindow.visible = true
+		game_overMessage.text = "FIREWALL UNDER ATTACK!!!"
+		return
 	for w in windowList:
 		if(w == window):
 			w.visible = true
+			return
 		
 func hideWindow(window) -> void:
+	if(isGameOver): return
 	for w in windowList:
 		if(w == window):
 			w.visible = false
+			return
 
 func playAudio(case: String):
 	match case: 
@@ -86,17 +98,27 @@ func instantiatePopUp(message: String):
 	newPopup.setMessage(message)
 
 func gameOver():
+	game_overCross.visible = true
 	game_overWindow.visible = true
-	print("GM VOER")
+	if(progressBar.value < 10):
+		game_overMessage.text = "FIREWALL SECURED!"
+	else:
+		game_overMessage.text = "FIREWALL BREACHED!"
 
 func getProgress():
 	return progressBar.value
 
 func setChatVisible():
 	chatWindow.visible = true
-	
+
 func getChatWindow() -> RichTextLabel:
 	return chat
 
 func addProgress(progress: float):
 	progressBar.value += progress
+	
+func restartGame():
+	get_tree().reload_current_scene()
+	
+func closeGame():
+	get_tree().quit()
