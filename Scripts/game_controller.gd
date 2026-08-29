@@ -21,7 +21,6 @@ var windowList
 var keyList
 
 func _ready():
-	
 	windowList = [
 		terminalWindow, 
 		startWindow, 
@@ -31,16 +30,7 @@ func _ready():
 		progressWindow, 
 		chatWindow
 		]
-		
-	keyList = [
-		$sfx/keystrokes/Key1, 
-		$sfx/keystrokes/Key2, 
-		$sfx/keystrokes/Key3, 
-		$sfx/keystrokes/Key4, 
-		$sfx/keystrokes/Key5, 
-		$sfx/keystrokes/Key6, 
-		$sfx/keystrokes/Key7
-		]
+	keyList = [$sfx/keystrokes/Key1, $sfx/keystrokes/Key2, $sfx/keystrokes/Key3, $sfx/keystrokes/Key4, $sfx/keystrokes/Key5, $sfx/keystrokes/Key6, $sfx/keystrokes/Key7]
 
 func _process(delta: float) -> void:
 	if(progressBar.value < 100):

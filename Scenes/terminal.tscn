@@ -32,22 +32,23 @@ offset_bottom = -2.0
 script = ExtResource("1_xws0m")
 
 [node name="Window" type="TextureRect" parent="." unique_id=2063490456]
+visible = false
 z_index = 4
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 192.0
-offset_top = 24.0
-offset_right = 1002.0
-offset_bottom = 554.0
+offset_left = 364.0
+offset_top = 136.0
+offset_right = 1365.0
+offset_bottom = 666.0
 texture = SubResource("GradientTexture1D_fco6y")
 
 [node name="menuBar" parent="Window" unique_id=302003343 instance=ExtResource("2_rwk22")]
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
-offset_right = 810.0
+offset_right = 1000.0
 offset_bottom = 30.0
 
 [node name="TextEdit" type="RichTextLabel" parent="Window" unique_id=1891380908]
