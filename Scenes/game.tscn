@@ -22,6 +22,8 @@ script = ExtResource("2_wrm1d")
 terminal_display = NodePath("../os/Terminal/Window/TextEdit")
 game_controller = NodePath("..")
 flush_button = NodePath("../os/Settings/Window/HardwareFlushButton")
+medium_threshold = 2
+hard_threshold = 5
 
 [node name="os" parent="." unique_id=1539373657 instance=ExtResource("2_qxrlw")]
 
