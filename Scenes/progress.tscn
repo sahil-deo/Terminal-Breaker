@@ -103,6 +103,7 @@ offset_right = 411.0
 offset_bottom = 57.0
 theme_override_styles/background = SubResource("StyleBoxFlat_in31g")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dswpt")
+value = 20.0
 
 [node name="BreachLabel" type="Label" parent="Window/Progress" unique_id=737387108]
 layout_mode = 0
