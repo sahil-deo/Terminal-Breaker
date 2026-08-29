@@ -21,7 +21,7 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var successAudio: AudioStreamPlayer = $sfx/Success
 @onready var beepAudio: AudioStreamPlayer = $sfx/Beep
 @onready var glitchAudio: AudioStreamPlayer = $sfx/Glitch
-
+@onready var progressBar: ProgressBar = $os/Progress/Window/Progress/BreachProgress
 
 var popUpOpen: bool = false
 var windowList 
@@ -61,8 +61,6 @@ func instantiatePopUp(message: String):
 	var newPopup: Control = POP_UP.instantiate();
 	os.add_child(newPopup);
 	newPopup.setMessage(message)
-	pass
 	
-func setProgress(progress: float):
-	
-	pass
+func addProgress(progress: float):
+	progressBar.value += progress
