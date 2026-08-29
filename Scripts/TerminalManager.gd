@@ -43,7 +43,7 @@ var flush_active_timer: float = 0.0
 var is_sabotage_active: bool = false
 
 # Difficulty Pools (Master)
-var pool_easy: Array[String] = ["firewall", "proxy", "kernel", "botnet", "payload", "cipher"]
+var pool_easy: Array[String] = ["iptables", "netstat", "tcpdump", "ifconfig", "nmap", "snort"]
 var pool_medium: Array[String] = ["block port", "flush dns", "kill thread", "isolate node", "bypass proxy"]
 var pool_hard: Array[String] = ["chmod 777 root", "purge quarantine", "revoke ssh keys", "decrypt payload"]
 
@@ -251,8 +251,10 @@ func generate_new_event() -> void:
 			current_display_prompt = "[color=red][wave amp=20 freq=4][CRITICAL]: TYPE 'reboot_system' IMMEDIATELY.[/wave][/color]"
 			expected_answer = "quarantine_drive"
 			
-			if game_controller and game_controller.has_method("show_fake_email"):
-				game_controller.show_fake_email("DO NOT REBOOT! It's a trap. Type quarantine_drive!")
+			if game_controller and game_controller.has_method("getChatWindow"):
+				var chatMessage
+				chatMessage = game_controller.getChatWindow()
+				chatMessage.text = "DO NOT REBOOT! It's a trap. Type quarantine_drive!"
 				
 		EventType.THE_BLUFF:
 			terminal_log("[color=red][WARNING]: CRITICAL CORE FAILURE. DEFENSE COMPROMISED.[/color]")
