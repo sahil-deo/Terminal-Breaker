@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bh4rllss5wlmm"]
+
+[ext_resource type="Script" uid="uid://cn436yrd88vbw" path="res://Scripts/application.gd" id="1_wipnb"]
+[ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="2_klfkc"]
+[ext_resource type="Texture2D" uid="uid://dxneo8ikwabfo" path="res://Assets/terminal2.png" id="3_osmty"]
+
+[sub_resource type="Gradient" id="Gradient_aaqfp"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.36862746, 0.36862746, 0.36862746, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
+gradient = SubResource("Gradient_aaqfp")
+
+[sub_resource type="FontVariation" id="FontVariation_o3wvq"]
+
+[node name="Start" type="Control" unique_id=2130627866]
+top_level = true
+visibility_layer = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -2.0
+offset_right = -1.0
+offset_bottom = -2.0
+script = ExtResource("1_wipnb")
+
+[node name="Window" type="TextureRect" parent="." unique_id=2063490456]
+z_index = 4
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 783.0
+offset_top = 366.0
+offset_right = 1177.0
+offset_bottom = 629.0
+texture = SubResource("GradientTexture1D_fco6y")
+
+[node name="menuBar" parent="Window" unique_id=302003343 instance=ExtResource("2_klfkc")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 394.0
+offset_bottom = 30.0
+
+[node name="TextureRect" parent="Window/menuBar" index="0" unique_id=802743367]
+offset_right = -1.0020752
+
+[node name="Title" type="Control" parent="Window" unique_id=1135729769]
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 1.0
+offset_bottom = 30.0
+
+[node name="TextureRect" type="TextureRect" parent="Window/Title" unique_id=1465591222]
+z_index = 2
+layout_mode = 0
+offset_left = 5.0
+offset_right = 27.0
+offset_bottom = 30.0
+texture = ExtResource("3_osmty")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Window/Title" unique_id=929300815]
+z_index = 2
+layout_mode = 0
+offset_left = 30.0
+offset_right = 68.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.6313726)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = SubResource("FontVariation_o3wvq")
+theme_override_font_sizes/font_size = 16
+text = "Start"
+vertical_alignment = 1
+
+[connection signal="button_down" from="Window/menuBar" to="." method="_on_menu_bar_button_down"]
+[connection signal="button_up" from="Window/menuBar" to="." method="_on_menu_bar_button_up"]
+[connection signal="button_up" from="Window/menuBar/Button" to="." method="_on_button_button_up"]
+
+[editable path="Window/menuBar"]
