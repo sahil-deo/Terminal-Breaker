@@ -17,10 +17,11 @@
 [node name="Game" type="Node2D" unique_id=1407990066]
 script = ExtResource("1_ebmjs")
 
-[node name="TerminalManager" type="Node" parent="." unique_id=68401410 node_paths=PackedStringArray("terminal_display", "game_controller")]
+[node name="TerminalManager" type="Node" parent="." unique_id=68401410 node_paths=PackedStringArray("terminal_display", "game_controller", "flush_button")]
 script = ExtResource("2_wrm1d")
 terminal_display = NodePath("../os/Terminal/Window/TextEdit")
 game_controller = NodePath("..")
+flush_button = NodePath("../os/Settings/Window/HardwareFlushButton")
 medium_threshold = 2
 hard_threshold = 4
 bluff_threshold = 6
