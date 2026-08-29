@@ -91,9 +91,3 @@ func getChatWindow() -> RichTextLabel:
 
 func addProgress(progress: float):
 	progressBar.value += progress
-
-func getProgress():
-	print("Got progress")
-
-func gameOver():
-	print("Game Over")
