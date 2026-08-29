@@ -32,6 +32,9 @@ offset_right = -1.0
 
 [node name="sfx" type="Node" parent="." unique_id=1178899432]
 
+[node name="Glitch" type="AudioStreamPlayer" parent="sfx" unique_id=59439913]
+stream = ExtResource("4_wowpa")
+
 [node name="Beep" type="AudioStreamPlayer" parent="sfx" unique_id=1963316330]
 stream = ExtResource("4_wowpa")
 
