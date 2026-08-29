@@ -22,6 +22,11 @@ enum EventType {
 @export var flush_cooldown_time: float = 15.0
 @export var flush_duration: float = 5.0
 
+@export_group("Difficulty Scaling")
+@export var medium_threshold: int = 4 # Number of successful commands to unlock Medium
+@export var hard_threshold: int = 8   # Number of successful commands to unlock Hard
+@export var bluff_threshold: int = 12 # Number of successful commands to trigger The Bluff
+
 # State Variables
 var current_event: EventType
 var expected_answer: String = ""
@@ -30,6 +35,7 @@ var input_buffer: Array[Dictionary] = []
 var terminal_history: String = ""
 var is_game_active: bool = true
 var bluff_triggered: bool = false
+var successful_commands: int = 0 # NEW: Tracks player progression independently of health
 
 # Timers & Sabotage States
 var flush_cooldown_timer: float = 0.0
@@ -62,7 +68,7 @@ func _ready() -> void:
 	terminal_log("=================================================================")
 	terminal_log(" [SYSTEM]: SECURE CONNECTION ESTABLISHED. DEFENSE GRID ONLINE.   ")
 	terminal_log("=================================================================")
-	generate_new_event()
+	call_deferred("generate_new_event")
 
 func refill_pools() -> void:
 	active_pool_easy = pool_easy.duplicate()
@@ -75,10 +81,8 @@ func refill_pools() -> void:
 func _process(delta: float) -> void:
 	if not is_game_active: return
 
-	# Continually check if the external breach timer caused a Game Over
 	check_game_state()
 
-	# Handle Hardware Flush Timers
 	if flush_active_timer > 0:
 		flush_active_timer -= delta
 		if flush_active_timer <= 0:
@@ -161,7 +165,6 @@ func _on_flush_button_pressed() -> void:
 func verify_cipher(player_input: String) -> void:
 	if not is_game_active: return
 
-	# 1. SPECIAL CASE: The player fell for the Factory Reset bluff
 	if player_input == "factory_reset":
 		if game_controller:
 			game_controller.addProgress(50.0)
@@ -169,33 +172,36 @@ func verify_cipher(player_input: String) -> void:
 			game_controller.playAudio("glitch")
 		terminal_log("\n[WARNING] Factory Reset accepted. Massive breach detected (+50%).")
 		check_game_state()
+		if is_game_active: generate_new_event()
 		return
 
-	# 2. SPECIAL CASE: The player fell for the UI Contradiction (Reboot System)
 	if player_input == "reboot_system":
 		if game_controller:
-			# Dropping defense to 0% equates to adding whatever is needed to hit 100% breach
 			game_controller.addProgress(100.0) 
 			game_controller.instantiatePopUp("FATAL ERROR:\nSystem Rebooting...\nFirewall offline. Threat has gained full control.")
 			game_controller.playAudio("glitch")
 		terminal_log("\n[CRITICAL] Reboot accepted. Defense dropped to 0%.")
 		check_game_state()
+		if is_game_active: generate_new_event()
 		return
 
-	# 3. STANDARD VERIFICATION
 	if player_input == expected_answer:
+		successful_commands += 1 # NEW: Push the difficulty tier up!
+		
 		if game_controller: 
 			game_controller.addProgress(success_reduction)
 			game_controller.playAudio("success")
 		terminal_log("\n[STATUS: SUCCESS] Protocol accepted. Breach reduced (%.0f%%)." % success_reduction)
 	else:
-		var penalty = penalty_hard if game_controller and game_controller.getProgress() > 50.0 else penalty_standard
+		var penalty = penalty_hard if successful_commands >= hard_threshold else penalty_standard
 		if game_controller: 
 			game_controller.addProgress(penalty)
 			game_controller.playAudio("beep")
 		terminal_log("\n[STATUS: BREACH] Command rejected. Target was: %s (+%.0f%%)" % [expected_answer, penalty])
 			
 	check_game_state()
+	if is_game_active: 
+		generate_new_event()
 
 func check_game_state() -> void:
 	if not game_controller or not is_game_active: return
@@ -206,34 +212,29 @@ func check_game_state() -> void:
 		system_compromised_sequence()
 	elif current_breach <= 0.0:
 		complete_defense_sequence()
-	else:
-		# If the game is still active and waiting for a prompt, generate one
-		if current_display_prompt == "" or input_buffer.is_empty():
-			generate_new_event()
 
 func generate_new_event() -> void:
 	if not is_game_active: return
-	
 	is_sabotage_active = false
-	var breach_pct = game_controller.getProgress() if game_controller else 0.0
 	
-	# Events scale based on how high the breach is
-	if breach_pct >= 85.0 and not bluff_triggered:
+	# NEW: Events scale based on how many successful commands the player has solved
+	if successful_commands >= bluff_threshold and not bluff_triggered:
 		current_event = EventType.THE_BLUFF
 		bluff_triggered = true
-	elif breach_pct >= 66.0 and randf() < 0.3:
+	elif successful_commands >= hard_threshold and randf() < 0.3:
 		current_event = EventType.UI_CONTRADICTION
-	elif breach_pct >= 33.0 and randf() < 0.4:
+	elif successful_commands >= medium_threshold and randf() < 0.4:
 		current_event = EventType.KEYLOGGER_ATTACK
 	else:
 		current_event = EventType.STANDARD_DEFENSE
 		
 	match current_event:
 		EventType.STANDARD_DEFENSE, EventType.KEYLOGGER_ATTACK:
-			if breach_pct < 33.0:
+			# Progressive Word Difficulty
+			if successful_commands < medium_threshold:
 				if active_pool_easy.is_empty(): refill_pools()
 				expected_answer = active_pool_easy.pop_back()
-			elif breach_pct < 66.0:
+			elif successful_commands < hard_threshold:
 				if active_pool_medium.is_empty(): refill_pools()
 				expected_answer = active_pool_medium.pop_back()
 			else:
