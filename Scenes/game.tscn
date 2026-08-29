@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bwwbkpho2kst5" path="res://Scripts/TerminalManager.gd" id="2_wrm1d"]
 [ext_resource type="AudioStream" uid="uid://ch5kq4ik204aw" path="res://Assets/Audio/beep2.wav" id="4_wowpa"]
 [ext_resource type="AudioStream" uid="uid://blenqxxke8s1o" path="res://Assets/Audio/success.wav" id="5_i6g32"]
+[ext_resource type="AudioStream" uid="uid://yvjdj01bkj3h" path="res://Assets/Audio/glitch.wav" id="6_rfjv2"]
 [ext_resource type="AudioStream" uid="uid://bu04tnc5xxoq0" path="res://Assets/Audio/keystrokes/key1.wav" id="6_rku1e"]
 [ext_resource type="AudioStream" uid="uid://bba86g7ph1k3p" path="res://Assets/Audio/keystrokes/key2.wav" id="7_rfjv2"]
 [ext_resource type="AudioStream" uid="uid://dmsgbssaa0o0h" path="res://Assets/Audio/keystrokes/key3.wav" id="8_1phco"]
@@ -33,14 +34,14 @@ offset_right = -1.0
 
 [node name="sfx" type="Node" parent="." unique_id=1178899432]
 
-[node name="Glitch" type="AudioStreamPlayer" parent="sfx" unique_id=59439913]
-stream = ExtResource("4_wowpa")
-
 [node name="Beep" type="AudioStreamPlayer" parent="sfx" unique_id=1963316330]
 stream = ExtResource("4_wowpa")
 
 [node name="Success" type="AudioStreamPlayer" parent="sfx" unique_id=804428742]
 stream = ExtResource("5_i6g32")
+
+[node name="Glitch" type="AudioStreamPlayer" parent="sfx" unique_id=315644143]
+stream = ExtResource("6_rfjv2")
 
 [node name="keystrokes" type="Node" parent="sfx" unique_id=1030245971]
 

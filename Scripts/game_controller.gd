@@ -4,15 +4,10 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var os: CanvasLayer = $os
 
 @onready var terminalWindow: TextureRect = $os/Terminal/Window
-
 @onready var startWindow: TextureRect = $os/Start/Window
-
 @onready var settingsWindow: TextureRect = $os/Settings/Window
-
 @onready var readmeWindow: TextureRect = $os/Readme/Window
-
 @onready var progressWindow: TextureRect = $os/Progress/Window
-
 @onready var chatWindow: TextureRect = $os/Chat/Window
 @onready var chat: RichTextLabel = $os/Chat/Window/chat
 
@@ -81,7 +76,7 @@ func gameOver():
 	pass
 
 func getProgress():
-	progressBar.value
+	return progressBar.value
 
 func setChatVisible():
 	chatWindow.visible = true
