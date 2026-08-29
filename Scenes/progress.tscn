@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://mr1yhptoyg8k"]
+
+[ext_resource type="Script" uid="uid://cn436yrd88vbw" path="res://Scripts/application.gd" id="1_fcfh0"]
+[ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="2_nyopt"]
+[ext_resource type="Texture2D" uid="uid://xpabql0a6sar" path="res://Assets/settings.png" id="3_bwcwu"]
+[ext_resource type="Texture2D" uid="uid://dond3u4uj3wle" path="res://Assets/taskbar-icon-bg.png" id="4_ixy4f"]
+
+[sub_resource type="Gradient" id="Gradient_n73s8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
+gradient = SubResource("Gradient_n73s8")
+
+[sub_resource type="FontVariation" id="FontVariation_6kysc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_in31g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dswpt"]
+bg_color = Color(0.75292075, 0, 0.18745217, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00ph1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ts6jo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y1pwr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tdda1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0icg"]
+
+[node name="Progress" type="Control" unique_id=2130627866]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -2.0
+offset_right = -1.0
+offset_bottom = -2.0
+script = ExtResource("1_fcfh0")
+
+[node name="Window" type="TextureRect" parent="." unique_id=2063490456]
+visible = false
+z_index = 4
+layout_mode = 1
+anchors_preset = -1
+offset_left = 364.0
+offset_top = 136.0
+offset_right = 1366.0
+offset_bottom = 694.0
+texture = SubResource("GradientTexture1D_fco6y")
+
+[node name="menuBar" parent="Window" unique_id=302003343 instance=ExtResource("2_nyopt")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1002.0
+offset_bottom = 30.0
+
+[node name="TextureRect" parent="Window/menuBar" index="0" unique_id=802743367]
+offset_right = -0.9990845
+
+[node name="Title" type="Control" parent="Window" unique_id=1879103725]
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 1.0
+offset_bottom = 30.0
+
+[node name="TextureRect" type="TextureRect" parent="Window/Title" unique_id=1849929056]
+z_index = 2
+layout_mode = 0
+offset_left = 5.0
+offset_right = 24.0
+offset_bottom = 30.0
+texture = ExtResource("3_bwcwu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Window/Title" unique_id=1211168999]
+z_index = 2
+layout_mode = 0
+offset_left = 29.0
+offset_right = 91.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.6313726)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = SubResource("FontVariation_6kysc")
+theme_override_font_sizes/font_size = 16
+text = "Firewall"
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Window" unique_id=463746313]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 83.0
+offset_right = 212.0
+offset_bottom = 106.0
+text = "Firewall unsecure!!"
+
+[node name="Progress" type="Control" parent="Window" unique_id=1570938118]
+anchors_preset = 0
+offset_left = 204.0
+offset_top = 219.0
+offset_right = 204.0
+offset_bottom = 219.0
+
+[node name="BreachProgress" type="ProgressBar" parent="Window/Progress" unique_id=3293523]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 600.0
+offset_bottom = 57.0
+theme_override_styles/background = SubResource("StyleBoxFlat_in31g")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dswpt")
+value = 40.0
+
+[node name="BreachLabel" type="Label" parent="Window/Progress" unique_id=737387108]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Breach status"
+
+[node name="Icon" type="Button" parent="." unique_id=1462929489]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 550.0
+offset_right = 176.0
+offset_bottom = 644.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_00ph1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ts6jo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_y1pwr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tdda1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b0icg")
+icon = ExtResource("3_bwcwu")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Icon" unique_id=953360062]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 93.0
+offset_right = 95.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.67058825)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "firewall.exe"
+horizontal_alignment = 1
+
+[node name="TaskbarIcon" type="TextureRect" parent="." unique_id=305979159]
+z_index = 1
+layout_mode = 0
+offset_left = 61.0
+offset_top = 1039.0
+offset_right = 462.0
+offset_bottom = 1073.0
+texture = ExtResource("4_ixy4f")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="TaskbarIcon" unique_id=436246927]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 34.0
+text = "Firewall"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="button_down" from="Window/menuBar" to="." method="_on_menu_bar_button_down"]
+[connection signal="button_up" from="Window/menuBar" to="." method="_on_menu_bar_button_up"]
+[connection signal="button_up" from="Window/menuBar/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="Icon" to="." method="_on_icon_button_up"]
+
+[editable path="Window/menuBar"]

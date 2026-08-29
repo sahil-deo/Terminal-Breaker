@@ -90,6 +90,7 @@ text = "Start"
 vertical_alignment = 1
 
 [node name="Icon" type="Button" parent="." unique_id=106165523]
+z_index = 2
 layout_mode = 0
 offset_left = 10.0
 offset_top = 1037.0

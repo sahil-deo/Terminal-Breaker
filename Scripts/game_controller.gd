@@ -15,15 +15,20 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var readmeWindow: TextureRect = $os/Readme/Window
 @onready var _readmeTaskbarIcon: TextureRect = $os/Readme/TaskbarIcon
 
+@onready var progressWindow: TextureRect = $os/Progress/Window
+@onready var _progressTaskbarIcon: TextureRect = $os/Progress/TaskbarIcon
+
 @onready var successAudio: AudioStreamPlayer = $sfx/Success
 @onready var beepAudio: AudioStreamPlayer = $sfx/Beep
+@onready var glitchAudio: AudioStreamPlayer = $sfx/Glitch
+
 
 var popUpOpen: bool = false
 var windowList 
 var keyList
 
 func _ready():
-	windowList = [terminalWindow, _terminalTaskbarIcon, startWindow, _startTaskbarIcon, settingsWindow, _settinsTaskbarIcon, settingsWindow, _settinsTaskbarIcon, readmeWindow, _readmeTaskbarIcon]
+	windowList = [terminalWindow, _terminalTaskbarIcon, startWindow, _startTaskbarIcon, settingsWindow, _settinsTaskbarIcon, settingsWindow, _settinsTaskbarIcon, readmeWindow, _readmeTaskbarIcon, progressWindow, _progressTaskbarIcon]
 	keyList = [$sfx/keystrokes/Key1, $sfx/keystrokes/Key2, $sfx/keystrokes/Key3, $sfx/keystrokes/Key4, $sfx/keystrokes/Key5, $sfx/keystrokes/Key6, $sfx/keystrokes/Key7]
 
 func showWindow(window, icon) -> void:
@@ -48,10 +53,16 @@ func playAudio(case: String):
 			keyList[6].play()
 		"enter":
 			keyList[6].play()
+		"glitch":
+			glitchAudio.play()
 	
 func instantiatePopUp(message: String):
 	popUpOpen = true
 	var newPopup: Control = POP_UP.instantiate();
 	os.add_child(newPopup);
 	newPopup.setMessage(message)
+	pass
+	
+func setProgress(progress: float):
+	
 	pass
