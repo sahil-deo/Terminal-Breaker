@@ -31,6 +31,12 @@ func _ready():
 	windowList = [terminalWindow, _terminalTaskbarIcon, startWindow, _startTaskbarIcon, settingsWindow, _settinsTaskbarIcon, settingsWindow, _settinsTaskbarIcon, readmeWindow, _readmeTaskbarIcon, progressWindow, _progressTaskbarIcon]
 	keyList = [$sfx/keystrokes/Key1, $sfx/keystrokes/Key2, $sfx/keystrokes/Key3, $sfx/keystrokes/Key4, $sfx/keystrokes/Key5, $sfx/keystrokes/Key6, $sfx/keystrokes/Key7]
 
+func _process(delta: float) -> void:
+	if(progressBar.value < 100):
+		progressBar.value += delta * 1;
+	else:
+		pass
+
 func showWindow(window, icon) -> void:
 	for w in windowList:
 		if(w == window or w == icon):
@@ -62,5 +68,11 @@ func instantiatePopUp(message: String):
 	os.add_child(newPopup);
 	newPopup.setMessage(message)
 	
+func sendChat(message: String):
+	pass
+	
+func showChatWindow(state: bool):
+	pass
+
 func addProgress(progress: float):
 	progressBar.value += progress
