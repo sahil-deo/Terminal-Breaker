@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dond3u4uj3wle" path="res://Assets/taskbar-icon-bg.png" id="4_aaqfp"]
 
 [sub_resource type="Gradient" id="Gradient_n73s8"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.264)
+colors = PackedColorArray(0.43020844, 0.44105598, 0.4618513, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
 gradient = SubResource("Gradient_n73s8")
@@ -33,7 +34,6 @@ offset_bottom = -2.0
 script = ExtResource("2_i44u3")
 
 [node name="Window" type="TextureRect" parent="." unique_id=2063490456]
-visible = false
 z_index = 4
 layout_mode = 1
 anchors_preset = -1
@@ -83,6 +83,13 @@ theme_override_fonts/font = SubResource("FontVariation_6kysc")
 theme_override_font_sizes/font_size = 16
 text = "Settings"
 vertical_alignment = 1
+
+[node name="HardwareFlushButton" type="Button" parent="Window" unique_id=607343330]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 65.0
+offset_right = 100.0
+offset_bottom = 110.0
 
 [node name="Icon" type="Button" parent="." unique_id=1462929489]
 layout_mode = 0
