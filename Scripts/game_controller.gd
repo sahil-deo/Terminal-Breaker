@@ -4,19 +4,17 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var os: CanvasLayer = $os
 
 @onready var terminalWindow: TextureRect = $os/Terminal/Window
-@onready var _terminalTaskbarIcon: TextureRect = $os/Terminal/TaskbarIcon
 
 @onready var startWindow: TextureRect = $os/Start/Window
-@onready var _startTaskbarIcon: TextureRect = $os/Start/TaskbarIcon
 
 @onready var settingsWindow: TextureRect = $os/Settings/Window
-@onready var _settinsTaskbarIcon: TextureRect = $os/Settings/TaskbarIcon
 
 @onready var readmeWindow: TextureRect = $os/Readme/Window
-@onready var _readmeTaskbarIcon: TextureRect = $os/Readme/TaskbarIcon
 
 @onready var progressWindow: TextureRect = $os/Progress/Window
-@onready var _progressTaskbarIcon: TextureRect = $os/Progress/TaskbarIcon
+
+@onready var chatWindow: TextureRect = $os/Chat/Window
+@onready var chat: RichTextLabel = $os/Chat/Window/chat
 
 @onready var successAudio: AudioStreamPlayer = $sfx/Success
 @onready var beepAudio: AudioStreamPlayer = $sfx/Beep
@@ -28,21 +26,32 @@ var windowList
 var keyList
 
 func _ready():
-	windowList = [terminalWindow, _terminalTaskbarIcon, startWindow, _startTaskbarIcon, settingsWindow, _settinsTaskbarIcon, settingsWindow, _settinsTaskbarIcon, readmeWindow, _readmeTaskbarIcon, progressWindow, _progressTaskbarIcon]
+	windowList = [
+		terminalWindow, 
+		startWindow, 
+		settingsWindow, 
+		settingsWindow, 
+		readmeWindow, 
+		progressWindow, 
+		chatWindow
+		]
 	keyList = [$sfx/keystrokes/Key1, $sfx/keystrokes/Key2, $sfx/keystrokes/Key3, $sfx/keystrokes/Key4, $sfx/keystrokes/Key5, $sfx/keystrokes/Key6, $sfx/keystrokes/Key7]
 
 func _process(delta: float) -> void:
 	if(progressBar.value < 100):
 		progressBar.value += delta * 1;
 	else:
-		pass
+		gameOver()
 
-func showWindow(window, icon) -> void:
+func showWindow(window) -> void:
 	for w in windowList:
-		if(w == window or w == icon):
+		if(w == window):
 			w.visible = true
-			continue
-		w.visible=false
+		
+func hideWindow(window) -> void:
+	for w in windowList:
+		if(w == window):
+			w.visible = false
 
 func playAudio(case: String):
 	match case: 
@@ -67,12 +76,18 @@ func instantiatePopUp(message: String):
 	var newPopup: Control = POP_UP.instantiate();
 	os.add_child(newPopup);
 	newPopup.setMessage(message)
-	
-func sendChat(message: String):
+
+func gameOver():
 	pass
+
+func getProgress():
+	progressBar.value
+
+func setChatVisible():
+	chatWindow.visible = true
 	
-func showChatWindow(state: bool):
-	pass
+func getChatWindow() -> RichTextLabel:
+	return chat
 
 func addProgress(progress: float):
 	progressBar.value += progress

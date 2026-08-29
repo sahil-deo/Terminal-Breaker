@@ -1,19 +1,18 @@
 extends Control
 @onready var gc = get_node("../../.")
 @onready var window: TextureRect = $Window
-@onready var taskbar_icon: TextureRect = $TaskbarIcon
 
 var dragging = false
 var offsetX: float = 0.0
 func _on_button_button_up() -> void:
-	gc.showWindow(null, null)
+	gc.hideWindow(window)
 
 func _ready():
 	window.visibility_changed.connect(_on_visibility_changed)
 
 
 func _on_icon_button_up() -> void:
-	gc.showWindow(window, taskbar_icon)
+	gc.showWindow(window)
 
 func _physics_process(delta: float) -> void:
 	if dragging:
@@ -34,7 +33,6 @@ func _physics_process(delta: float) -> void:
 		if window.position.y > ws.y:
 			window.position.y = ws.y - 100
 	pass
-
 
 
 

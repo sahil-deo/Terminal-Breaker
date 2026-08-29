@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cn436yrd88vbw" path="res://Scripts/application.gd" id="1_xws0m"]
 [ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="2_rwk22"]
 [ext_resource type="Texture2D" uid="uid://dxneo8ikwabfo" path="res://Assets/terminal2.png" id="4_1llhr"]
-[ext_resource type="Texture2D" uid="uid://dond3u4uj3wle" path="res://Assets/taskbar-icon-bg.png" id="4_mc8ca"]
 
 [sub_resource type="Gradient" id="Gradient_n73s8"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -121,26 +120,6 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 3
 text = "terminal.exe"
 horizontal_alignment = 1
-
-[node name="TaskbarIcon" type="TextureRect" parent="." unique_id=688885918]
-visible = false
-z_index = 1
-layout_mode = 0
-offset_left = 61.0
-offset_top = 1039.0
-offset_right = 462.0
-offset_bottom = 1073.0
-texture = ExtResource("4_mc8ca")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="TaskbarIcon" unique_id=803782468]
-layout_mode = 0
-offset_right = 400.0
-offset_bottom = 34.0
-text = "Terminal"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
 
 [connection signal="button_down" from="Window/menuBar" to="." method="_on_menu_bar_button_down"]
 [connection signal="button_up" from="Window/menuBar" to="." method="_on_menu_bar_button_up"]

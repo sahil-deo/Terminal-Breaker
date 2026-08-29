@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://cwoy5mceedgre"]
+
+[ext_resource type="Script" uid="uid://cn436yrd88vbw" path="res://Scripts/application.gd" id="1_fcfh0"]
+[ext_resource type="PackedScene" uid="uid://c67jtglob243c" path="res://Scenes/menu_bar.tscn" id="2_nyopt"]
+[ext_resource type="Texture2D" uid="uid://dxneo8ikwabfo" path="res://Assets/terminal2.png" id="3_1jmr8"]
+
+[sub_resource type="Gradient" id="Gradient_n73s8"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.37036446, 0.3703645, 0.37036446, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fco6y"]
+gradient = SubResource("Gradient_n73s8")
+
+[sub_resource type="FontVariation" id="FontVariation_6kysc"]
+
+[node name="Chat" type="Control" unique_id=2130627866]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -2.0
+offset_right = -1.0
+offset_bottom = -2.0
+script = ExtResource("1_fcfh0")
+
+[node name="Window" type="TextureRect" parent="." unique_id=2063490456]
+z_index = 4
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1560.0
+offset_top = 454.0
+offset_right = 1904.0
+offset_bottom = 1012.0
+texture = SubResource("GradientTexture1D_fco6y")
+
+[node name="menuBar" parent="Window" unique_id=302003343 instance=ExtResource("2_nyopt")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 343.0
+offset_bottom = 30.0
+
+[node name="TextureRect" parent="Window/menuBar" index="0" unique_id=802743367]
+offset_right = -0.9990845
+
+[node name="Title" type="Control" parent="Window" unique_id=1879103725]
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 1.0
+offset_bottom = 30.0
+
+[node name="TextureRect" type="TextureRect" parent="Window/Title" unique_id=1849929056]
+z_index = 2
+layout_mode = 0
+offset_left = 5.0
+offset_right = 24.0
+offset_bottom = 30.0
+texture = ExtResource("3_1jmr8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Window/Title" unique_id=1211168999]
+z_index = 2
+layout_mode = 0
+offset_left = 29.0
+offset_right = 91.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.6313726)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = SubResource("FontVariation_6kysc")
+theme_override_font_sizes/font_size = 16
+text = "Private Message"
+vertical_alignment = 1
+
+[node name="chat" type="RichTextLabel" parent="Window" unique_id=1719093986]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 35.0
+offset_right = 336.0
+offset_bottom = 497.0
+
+[node name="TaskbarIcon" type="TextureRect" parent="." unique_id=459507038]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="button_down" from="Window/menuBar" to="." method="_on_menu_bar_button_down"]
+[connection signal="button_up" from="Window/menuBar" to="." method="_on_menu_bar_button_up"]
+[connection signal="button_up" from="Window/menuBar/Button" to="." method="_on_button_button_up"]
+
+[editable path="Window/menuBar"]
