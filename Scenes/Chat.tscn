@@ -80,6 +80,11 @@ offset_top = 35.0
 offset_right = 336.0
 offset_bottom = 497.0
 
+[node name="TaskbarIcon" type="TextureRect" parent="." unique_id=459507038]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="button_down" from="Window/menuBar" to="." method="_on_menu_bar_button_down"]
 [connection signal="button_up" from="Window/menuBar" to="." method="_on_menu_bar_button_up"]
 [connection signal="button_up" from="Window/menuBar/Button" to="." method="_on_button_button_up"]

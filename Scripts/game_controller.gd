@@ -94,6 +94,9 @@ func instantiatePopUp(message: String):
 	var newPopup: Control = POP_UP.instantiate();
 	os.add_child(newPopup);
 	newPopup.setMessage(message)
+
+func setChatVisible():
+	chatWindow.visible = true
 	
 func getChatWindow() -> RichTextLabel:
 	return chat
