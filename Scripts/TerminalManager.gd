@@ -20,7 +20,7 @@ enum EventType {
 @export var penalty_standard: float = 10.0
 @export var penalty_hard: float = 15.0
 @export var flush_cooldown_time: float = 15.0
-@export var flush_duration: float = 5.0
+@export var flush_duration: float = 7.0
 
 @export_group("Difficulty Scaling")
 @export var medium_threshold: int = 4 # Number of successful commands to unlock Medium
