@@ -90,7 +90,7 @@ func _process(delta: float) -> void:
 	
 	if flush_cooldown_timer > 0:
 		flush_cooldown_timer -= delta
-		if flush_button: flush_button.disabled = true
+		
 	elif flush_button and not flush_button.disabled and flush_active_timer <= 0:
 		flush_button.disabled = false
 
@@ -153,15 +153,20 @@ func process_input_sabotage(char_in: String) -> void:
 	input_buffer.append({"raw": actual_char, "bbcode": bbcode_char})
 
 func _on_flush_button_pressed() -> void:
-	if flush_cooldown_timer > 0: return
+	if flush_cooldown_timer > 0:
+		# If they click while it's on cooldown, punish them with a popup!
+		if game_controller:
+			var time_left = "%.1f" % flush_cooldown_timer
+			game_controller.instantiatePopUp("DENIED:\nHardware Flush is recharging.\nWait " + time_left + " seconds!")
+			game_controller.playAudio("beep")
+		return
 	
 	if game_controller: game_controller.playAudio("success")
 	flush_active_timer = flush_duration
 	flush_cooldown_timer = flush_cooldown_time
-	flush_button.disabled = true
 	
 	terminal_log("[color=cyan][SYSTEM]: HARDWARE OVERRIDE ENGAGED. CACHE CLEARED FOR 5 SECONDS.[/color]")
-
+	
 func verify_cipher(player_input: String) -> void:
 	if not is_game_active: return
 
