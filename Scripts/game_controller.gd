@@ -4,6 +4,7 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var os: CanvasLayer = $os
 
 @onready var terminalWindow: TextureRect = $os/Terminal/Window
+@onready var game_overWindow: TextureRect = $os/GameOver/Window
 @onready var startWindow: TextureRect = $os/Start/Window
 @onready var settingsWindow: TextureRect = $os/Settings/Window
 @onready var readmeWindow: TextureRect = $os/Readme/Window
@@ -19,6 +20,7 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 var popUpOpen: bool = false
 var windowList 
 var keyList
+var isGameOver: bool = false
 
 func _ready():
 	
@@ -43,9 +45,10 @@ func _ready():
 		]
 
 func _process(delta: float) -> void:
-	if(progressBar.value < 100):
+	if(progressBar.value > 0 and progressBar.value < 100 and not isGameOver):
 		progressBar.value += delta * 1;
-	else:
+	elif not isGameOver:
+		isGameOver = true
 		gameOver()
 
 func showWindow(window) -> void:
@@ -83,7 +86,8 @@ func instantiatePopUp(message: String):
 	newPopup.setMessage(message)
 
 func gameOver():
-	pass
+	game_overWindow.visible = true
+	print("GM VOER")
 
 func getProgress():
 	return progressBar.value
