@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://11upglhpp0jb" path="res://Scenes/settings.tscn" id="3_dqeoi"]
 [ext_resource type="PackedScene" uid="uid://lji7ui7gjmsx" path="res://Scenes/readme.tscn" id="4_sfqfq"]
 [ext_resource type="PackedScene" uid="uid://mr1yhptoyg8k" path="res://Scenes/progress.tscn" id="6_sfqfq"]
+[ext_resource type="PackedScene" uid="uid://cwoy5mceedgre" path="res://Scenes/Chat.tscn" id="7_hqj1r"]
 
 [sub_resource type="Gradient" id="Gradient_n73s8"]
 colors = PackedColorArray(0.5294118, 0.5294118, 0.5294118, 1, 0.5294118, 0.5294118, 0.5294118, 1)
@@ -65,3 +66,5 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="Progress" parent="." unique_id=204251084 instance=ExtResource("6_sfqfq")]
+
+[node name="Chat" parent="." unique_id=2083160019 instance=ExtResource("7_hqj1r")]

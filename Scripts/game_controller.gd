@@ -18,6 +18,9 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var progressWindow: TextureRect = $os/Progress/Window
 @onready var _progressTaskbarIcon: TextureRect = $os/Progress/TaskbarIcon
 
+@onready var chatWindow: TextureRect = $os/Chat/Window
+@onready var chat: RichTextLabel = $os/Chat/Window/chat
+
 @onready var successAudio: AudioStreamPlayer = $sfx/Success
 @onready var beepAudio: AudioStreamPlayer = $sfx/Beep
 @onready var glitchAudio: AudioStreamPlayer = $sfx/Glitch
@@ -28,7 +31,21 @@ var windowList
 var keyList
 
 func _ready():
-	windowList = [terminalWindow, _terminalTaskbarIcon, startWindow, _startTaskbarIcon, settingsWindow, _settinsTaskbarIcon, settingsWindow, _settinsTaskbarIcon, readmeWindow, _readmeTaskbarIcon, progressWindow, _progressTaskbarIcon]
+	windowList = [
+		terminalWindow, 
+		_terminalTaskbarIcon, 
+		startWindow, 
+		_startTaskbarIcon, 
+		settingsWindow, 
+		_settinsTaskbarIcon, 
+		settingsWindow, 
+		_settinsTaskbarIcon, 
+		readmeWindow, 
+		_readmeTaskbarIcon, 
+		progressWindow, 
+		_progressTaskbarIcon,
+		chatWindow
+		]
 	keyList = [$sfx/keystrokes/Key1, $sfx/keystrokes/Key2, $sfx/keystrokes/Key3, $sfx/keystrokes/Key4, $sfx/keystrokes/Key5, $sfx/keystrokes/Key6, $sfx/keystrokes/Key7]
 
 func _process(delta: float) -> void:
@@ -38,11 +55,21 @@ func _process(delta: float) -> void:
 		pass
 
 func showWindow(window, icon) -> void:
+	
+	if(window == chatWindow):
+		window.visible = true
+		return
+	
 	for w in windowList:
 		if(w == window or w == icon):
 			w.visible = true
 			continue
+		elif(w == chatWindow):
+			continue
 		w.visible=false
+		
+func hideChatWindow():
+	chatWindow.visible = false
 
 func playAudio(case: String):
 	match case: 
@@ -68,11 +95,8 @@ func instantiatePopUp(message: String):
 	os.add_child(newPopup);
 	newPopup.setMessage(message)
 	
-func sendChat(message: String):
-	pass
-	
-func showChatWindow(state: bool):
-	pass
+func getChatWindow() -> RichTextLabel:
+	return chat
 
 func addProgress(progress: float):
 	progressBar.value += progress
