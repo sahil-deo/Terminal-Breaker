@@ -19,6 +19,7 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var glitchAudio: AudioStreamPlayer = $sfx/Glitch
 @onready var breachedAudio: AudioStreamPlayer = $sfx/Breached
 @onready var pingAudio: AudioStreamPlayer = $sfx/Ping
+@onready var victoryAudio: AudioStreamPlayer = $"sfx/Victory"
 @onready var bgm: AudioStreamPlayer = $bgm
 @onready var progressBar: ProgressBar = $os/Progress/Window/Progress/BreachProgress
 
@@ -95,6 +96,8 @@ func playAudio(case: String):
 			pingAudio.play()
 		"breached":
 			breachedAudio.play()
+		"victory":
+			victoryAudio.play()
 	
 func instantiatePopUp(message: String):
 	popUpOpen = true
@@ -107,6 +110,7 @@ func gameOver():
 	game_overWindow.visible = true
 	if(progressBar.value < 10):
 		game_overMessage.text = "FIREWALL SECURED!"
+		playAudio("victory")
 	else:
 		game_overMessage.text = "FIREWALL BREACHED!"
 		playAudio("breached")

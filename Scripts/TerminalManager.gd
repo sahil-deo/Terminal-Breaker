@@ -260,6 +260,7 @@ func generate_new_event() -> void:
 			
 			if game_controller and game_controller.has_method("getChatWindow"):
 				var chatMessage
+				game_controller.setChatVisible()
 				chatMessage = game_controller.getChatWindow()
 				chatMessage.text = "DO NOT REBOOT! It's a trap. Type quarantine_drive!"
 				game_controller.playAudio("ping")
