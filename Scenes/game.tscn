@@ -27,9 +27,6 @@ script = ExtResource("2_wrm1d")
 terminal_display = NodePath("../os/Terminal/Window/TextEdit")
 game_controller = NodePath("..")
 flush_button = NodePath("../os/Settings/Window/HardwareFlushButton")
-medium_threshold = 2
-hard_threshold = 4
-bluff_threshold = 6
 
 [node name="os" parent="." unique_id=1539373657 instance=ExtResource("2_qxrlw")]
 
@@ -79,18 +76,8 @@ stream = ExtResource("11_ewbju")
 [node name="Key7" type="AudioStreamPlayer" parent="sfx/keystrokes" unique_id=2041282627]
 stream = ExtResource("12_85qyi")
 
-[node name="Ping" type="AudioStreamPlayer" parent="sfx" unique_id=1270320013]
-stream = ExtResource("15_nnt18")
-
-[node name="Victory" type="AudioStreamPlayer" parent="sfx" unique_id=1956573941]
-stream = ExtResource("16_85qyi")
-
-[node name="Breached" type="AudioStreamPlayer" parent="sfx" unique_id=1418553168]
-stream = ExtResource("16_ewbju")
-
-[node name="bgm" type="AudioStreamPlayer" parent="." unique_id=347608928]
-stream = ExtResource("15_nb51f")
-autoplay = true
+[connection signal="button_down" from="os/Settings/Window/HardwareFlushButton" to="TerminalManager" method="_on_hardware_flush_button_button_down"]
+[connection signal="pressed" from="os/Settings/Window/HardwareFlushButton" to="TerminalManager" method="_on_hardware_flush_button_pressed"]
 
 [editable path="os"]
 [editable path="os/Terminal"]

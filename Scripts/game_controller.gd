@@ -29,7 +29,6 @@ var keyList
 var isGameOver: bool = false
 
 func _ready():
-	
 	windowList = [
 		terminalWindow, 
 		startWindow, 
@@ -40,17 +39,7 @@ func _ready():
 		chatWindow,
 		game_overWindow
 		]
-
-
-	keyList = [
-		$sfx/keystrokes/Key1, 
-		$sfx/keystrokes/Key2, 
-		$sfx/keystrokes/Key3, 
-		$sfx/keystrokes/Key4, 
-		$sfx/keystrokes/Key5, 
-		$sfx/keystrokes/Key6, 
-		$sfx/keystrokes/Key7
-		]
+	keyList = [$sfx/keystrokes/Key1, $sfx/keystrokes/Key2, $sfx/keystrokes/Key3, $sfx/keystrokes/Key4, $sfx/keystrokes/Key5, $sfx/keystrokes/Key6, $sfx/keystrokes/Key7]
 
 func _process(delta: float) -> void:
 	if(progressBar.value > 0 and progressBar.value < 100 and not isGameOver):
