@@ -20,7 +20,7 @@ enum EventType {
 @export var penalty_standard: float = 10.0
 @export var penalty_hard: float = 15.0
 @export var flush_cooldown_time: float = 15.0
-@export var flush_duration: float = 5.0
+@export var flush_duration: float = 7.0
 
 @export_group("Difficulty Scaling")
 @export var medium_threshold: int = 4 # Number of successful commands to unlock Medium
@@ -43,7 +43,7 @@ var flush_active_timer: float = 0.0
 var is_sabotage_active: bool = false
 
 # Difficulty Pools (Master)
-var pool_easy: Array[String] = ["firewall", "proxy", "kernel", "botnet", "payload", "cipher"]
+var pool_easy: Array[String] = ["iptables", "netstat", "tcpdump", "ifconfig", "nmap", "snort"]
 var pool_medium: Array[String] = ["block port", "flush dns", "kill thread", "isolate node", "bypass proxy"]
 var pool_hard: Array[String] = ["chmod 777 root", "purge quarantine", "revoke ssh keys", "decrypt payload"]
 
@@ -90,7 +90,7 @@ func _process(delta: float) -> void:
 	
 	if flush_cooldown_timer > 0:
 		flush_cooldown_timer -= delta
-		if flush_button: flush_button.disabled = true
+		
 	elif flush_button and not flush_button.disabled and flush_active_timer <= 0:
 		flush_button.disabled = false
 
@@ -153,15 +153,20 @@ func process_input_sabotage(char_in: String) -> void:
 	input_buffer.append({"raw": actual_char, "bbcode": bbcode_char})
 
 func _on_flush_button_pressed() -> void:
-	if flush_cooldown_timer > 0: return
+	if flush_cooldown_timer > 0:
+		# If they click while it's on cooldown, punish them with a popup!
+		if game_controller:
+			var time_left = "%.1f" % flush_cooldown_timer
+			game_controller.instantiatePopUp("DENIED:\nHardware Flush is recharging.\nWait " + time_left + " seconds!")
+			game_controller.playAudio("beep")
+		return
 	
 	if game_controller: game_controller.playAudio("success")
 	flush_active_timer = flush_duration
 	flush_cooldown_timer = flush_cooldown_time
-	flush_button.disabled = true
 	
 	terminal_log("[color=cyan][SYSTEM]: HARDWARE OVERRIDE ENGAGED. CACHE CLEARED FOR 5 SECONDS.[/color]")
-
+	
 func verify_cipher(player_input: String) -> void:
 	if not is_game_active: return
 
@@ -190,12 +195,14 @@ func verify_cipher(player_input: String) -> void:
 		
 		if game_controller: 
 			game_controller.addProgress(success_reduction)
+			game_controller.instantiatePopUp("Correct!")
 			game_controller.playAudio("success")
 		terminal_log("\n[STATUS: SUCCESS] Protocol accepted. Breach reduced (%.0f%%)." % success_reduction)
 	else:
 		var penalty = penalty_hard if successful_commands >= hard_threshold else penalty_standard
 		if game_controller: 
 			game_controller.addProgress(penalty)
+			game_controller.instantiatePopUp("Wrong!")
 			game_controller.playAudio("beep")
 		terminal_log("\n[STATUS: BREACH] Command rejected. Target was: %s (+%.0f%%)" % [expected_answer, penalty])
 			
@@ -251,8 +258,12 @@ func generate_new_event() -> void:
 			current_display_prompt = "[color=red][wave amp=20 freq=4][CRITICAL]: TYPE 'reboot_system' IMMEDIATELY.[/wave][/color]"
 			expected_answer = "quarantine_drive"
 			
-			if game_controller and game_controller.has_method("show_fake_email"):
-				game_controller.show_fake_email("DO NOT REBOOT! It's a trap. Type quarantine_drive!")
+			if game_controller and game_controller.has_method("getChatWindow"):
+				var chatMessage
+				game_controller.setChatVisible()
+				chatMessage = game_controller.getChatWindow()
+				chatMessage.text = "DO NOT REBOOT! It's a trap. Type quarantine_drive!"
+				game_controller.playAudio("ping")
 				
 		EventType.THE_BLUFF:
 			terminal_log("[color=red][WARNING]: CRITICAL CORE FAILURE. DEFENSE COMPROMISED.[/color]")

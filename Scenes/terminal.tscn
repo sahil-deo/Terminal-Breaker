@@ -55,7 +55,7 @@ offset_bottom = 30.0
 layout_mode = 0
 offset_left = 19.0
 offset_top = 47.0
-offset_right = 978.0
+offset_right = 794.0
 offset_bottom = 516.0
 
 [node name="Title" type="Control" parent="Window" unique_id=1346148031]

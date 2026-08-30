@@ -78,7 +78,7 @@ layout_mode = 0
 offset_left = 9.0
 offset_top = 35.0
 offset_right = 336.0
-offset_bottom = 497.0
+offset_bottom = 227.0
 
 [node name="TaskbarIcon" type="TextureRect" parent="." unique_id=459507038]
 layout_mode = 0
