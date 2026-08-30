@@ -44,16 +44,15 @@ offset_bottom = -2.0
 script = ExtResource("1_wipnb")
 
 [node name="Window" type="TextureRect" parent="." unique_id=2063490456]
-visible = false
 z_index = 4
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 783.0
-offset_top = 366.0
-offset_right = 1177.0
-offset_bottom = 629.0
+offset_left = 909.0
+offset_top = 252.0
+offset_right = 1303.0
+offset_bottom = 515.0
 texture = SubResource("GradientTexture1D_fco6y")
 
 [node name="Message" type="Label" parent="Window" unique_id=781982509]

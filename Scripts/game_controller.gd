@@ -17,8 +17,9 @@ const POP_UP = preload("uid://q2a3umx2s1ny")
 @onready var successAudio: AudioStreamPlayer = $sfx/Success
 @onready var beepAudio: AudioStreamPlayer = $sfx/Beep
 @onready var glitchAudio: AudioStreamPlayer = $sfx/Glitch
-@onready var progressBar: ProgressBar = $os/Progress/Window/Progress/BreachProgress
+@onready var pingAudio: AudioStreamPlayer = $sfx/Ping
 @onready var bgm: AudioStreamPlayer = $bgm
+@onready var progressBar: ProgressBar = $os/Progress/Window/Progress/BreachProgress
 
 var popUpOpen: bool = false
 var windowList 
@@ -89,6 +90,8 @@ func playAudio(case: String):
 			keyList[6].play()
 		"glitch":
 			glitchAudio.play()
+		"ping":
+			pingAudio.play()
 	
 func instantiatePopUp(message: String):
 	popUpOpen = true

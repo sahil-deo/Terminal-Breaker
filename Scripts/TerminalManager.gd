@@ -262,6 +262,7 @@ func generate_new_event() -> void:
 				var chatMessage
 				chatMessage = game_controller.getChatWindow()
 				chatMessage.text = "DO NOT REBOOT! It's a trap. Type quarantine_drive!"
+				game_controller.playAudio("ping")
 				
 		EventType.THE_BLUFF:
 			terminal_log("[color=red][WARNING]: CRITICAL CORE FAILURE. DEFENSE COMPROMISED.[/color]")
