@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://dbq6qiphj6t84" path="res://Assets/Audio/keystrokes/key7.wav" id="12_85qyi"]
 [ext_resource type="AudioStream" uid="uid://bi403jihex1y5" path="res://Assets/Audio/bgm/retro-bgm-chan-server-room-523662.mp3" id="15_nb51f"]
 [ext_resource type="AudioStream" uid="uid://c1v4qpucrvhs3" path="res://Assets/Audio/notification.mp3" id="15_nnt18"]
+[ext_resource type="AudioStream" uid="uid://b2sias727175e" path="res://Assets/Audio/Breached.mp3" id="16_ewbju"]
 
 [node name="Game" type="Node2D" unique_id=1407990066]
 script = ExtResource("1_ebmjs")
@@ -79,6 +80,9 @@ stream = ExtResource("12_85qyi")
 
 [node name="Ping" type="AudioStreamPlayer" parent="sfx" unique_id=1270320013]
 stream = ExtResource("15_nnt18")
+
+[node name="Breached" type="AudioStreamPlayer" parent="sfx" unique_id=1418553168]
+stream = ExtResource("16_ewbju")
 
 [node name="bgm" type="AudioStreamPlayer" parent="." unique_id=347608928]
 stream = ExtResource("15_nb51f")
